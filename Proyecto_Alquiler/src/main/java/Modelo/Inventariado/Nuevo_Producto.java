@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Modelo;
+package Modelo.Inventariado;
 
 /**
  *
  * @author DAVID
  */
 public class Nuevo_Producto {
-    
+
     private int cantidad;
     private Producto producto;
 
@@ -37,16 +37,13 @@ public class Nuevo_Producto {
         this.producto = producto;
     }
 
-    public Producto nuevoProducto(){
-        
+    public Producto nuevoProducto() {
+
         Producto nuevoProducto = new Producto();
         nuevoProducto.setNom_pro(producto.getNom_pro());
         nuevoProducto.setCategoria(producto.getCategoria());
         nuevoProducto.setPrecio_uni(producto.getPrecio_uni());
-        
+
         return nuevoProducto;
     }
-    
-    
-    
 }
