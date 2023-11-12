@@ -119,16 +119,16 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
         return listado;
     }
 
-    public static void main(String[] args) {
-
-        ConsultaCategoria con = new ConsultaCategoria();
-        Categoria_Mobiliario cat = new Categoria_Mobiliario();
-        List<Categoria_Mobiliario> listado = con.getListado();
-
-        for (Categoria_Mobiliario obj : listado) {
-            System.out.println("Nombre: " + obj.getNom_cat() + ", Descripcion: " + obj.getDescrip());
-        }
-
-    }
+//    public static void main(String[] args) {
+//
+//        ConsultaCategoria con = new ConsultaCategoria();
+//        Categoria_Mobiliario cat = new Categoria_Mobiliario();
+//        List<Categoria_Mobiliario> listado = con.getListado();
+//
+//        for (Categoria_Mobiliario obj : listado) {
+//            System.out.println("Nombre: " + obj.getNom_cat() + ", Descripcion: " + obj.getDescrip());
+//        }
+//
+//    }
 
 }

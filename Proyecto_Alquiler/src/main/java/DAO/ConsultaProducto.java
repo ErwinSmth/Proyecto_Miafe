@@ -23,6 +23,8 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
     ConexionBD conectar = ConexionBD.getConexion();
 
     //Metodo para agregar un producto al inventario por defecto solo permitira agregar objetos que estan disponibles a prestar
+    //Retornada 3 en caso los productos a agregar sean negativo o cero
+    //Retornada 4 en caso el precio a insertar sea negatico o cero
     @Override
     public int agregar(Producto obj) {
 
@@ -36,6 +38,12 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
             ps.setString(2, obj.getNom_pro());
             ps.setInt(3, obj.getCantDisponible());
             ps.setFloat(4, obj.getPrecio_uni());
+
+            if (obj.getCantDisponible() <= 0) {
+                return 3;
+            } else if (obj.getPrecio_uni() <= 0) {
+                return 4;
+            }
 
             ps.executeUpdate();
 
@@ -197,12 +205,12 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
                                 + "SET cant_mantenimiento = cant_mantenimiento + ?,\n"
                                 + "    cant_disponible = cant_disponible - ?\n"
                                 + "WHERE nombre = ?;";
-                        
+
                         ps = conectar.conectar().prepareStatement(consulta);
                         ps.setInt(1, cantidad);
                         ps.setInt(2, cantidad);
                         ps.setString(3, obj.getNom_pro());
-                        
+
                         ps.executeUpdate();
 
                     } else {
@@ -215,7 +223,7 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
                 e.printStackTrace();
             }
         }
-        
+
         return 2;
     }
 
@@ -260,20 +268,19 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
         return listado;
     }
 
-    public static void main(String[] args) {
-
-        ConsultaProducto con = new ConsultaProducto();
-        // Caso 2: Operación válida
-        Producto producto2 = new Producto();
-        producto2.setNom_pro("Silla artesanal");
-        int resultado2 = con.setPrestado(producto2, 5);
-
-        if (resultado2 == 1) {
-            System.out.println("Caso 2: Operación exitosa. Productos prestados correctamente.");
-        } else {
-            System.out.println("Caso 2: Error al prestar productos.");
-        }
-
-    }
-
+//    public static void main(String[] args) {
+//
+//        ConsultaProducto con = new ConsultaProducto();
+//        // Caso 2: Operación válida
+//        Producto producto2 = new Producto();
+//        producto2.setNom_pro("Silla artesanal");
+//        int resultado2 = con.setPrestado(producto2, 5);
+//
+//        if (resultado2 == 1) {
+//            System.out.println("Caso 2: Operación exitosa. Productos prestados correctamente.");
+//        } else {
+//            System.out.println("Caso 2: Error al prestar productos.");
+//        }
+//
+//    }
 }
