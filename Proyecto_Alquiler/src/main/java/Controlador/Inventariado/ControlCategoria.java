@@ -217,21 +217,14 @@ public class ControlCategoria implements ActionListener {
         System.out.println("No es Admin"); 
     }
 
-//    public static void main(String[] args) {
-//        
-//        Usuario usactivo = new Usuario();
-//        usactivo.setRol(Roles_Usuarios.Caja);
-//        usactivo.setPri_nombre("david");
-//        usactivo.setApe_paterno("jacinto");
-//        Gestion_Categorias gescat = new Gestion_Categorias();
-//        
-//        ControlCategoria concat = new ControlCategoria(gescat, usactivo);
-//        
-//        if (concat.esAdmin()) {
-//            System.out.println("Si es Admin");
-//        } else {
-//            System.out.println("No es Admin");
-//        }
-//        
-//    }
+    public static void main(String[] args) {
+        
+        Usuario usactivo = new Usuario();
+        usactivo.setRol(Roles_Usuarios.Caja);
+        usactivo.setPri_nombre("david");
+        usactivo.setApe_paterno("jacinto");
+        Gestion_Categorias gescat = new Gestion_Categorias();
+        
+        
+    }
 }
