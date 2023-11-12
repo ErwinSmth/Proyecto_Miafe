@@ -44,6 +44,8 @@ public class Principal extends javax.swing.JFrame {
         mni_regCLIENTE = new javax.swing.JMenuItem();
         mnu_Clientes = new javax.swing.JMenu();
         mni_Clientes = new javax.swing.JMenuItem();
+        mnu_categorias = new javax.swing.JMenu();
+        mni_categoria = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_cerrar)
@@ -107,6 +109,13 @@ public class Principal extends javax.swing.JFrame {
         mnu_Clientes.add(mni_Clientes);
 
         mnbar_barra.add(mnu_Clientes);
+
+        mnu_categorias.setText("Categoria");
+
+        mni_categoria.setText("Gestion de Categorias");
+        mnu_categorias.add(mni_categoria);
+
+        mnbar_barra.add(mnu_categorias);
 
         setJMenuBar(mnbar_barra);
 
@@ -175,9 +184,11 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JMenuItem mni_Clientes;
     public javax.swing.JMenuItem mni_USINAC;
     public javax.swing.JMenuItem mni_Us;
+    public javax.swing.JMenuItem mni_categoria;
     public javax.swing.JMenuItem mni_regCLIENTE;
     public javax.swing.JMenu mnu_Alquiler;
     public javax.swing.JMenu mnu_Clientes;
     public javax.swing.JMenu mnu_Us;
+    public javax.swing.JMenu mnu_categorias;
     // End of variables declaration//GEN-END:variables
 }
