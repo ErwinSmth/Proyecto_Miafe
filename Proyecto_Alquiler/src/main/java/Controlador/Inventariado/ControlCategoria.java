@@ -6,6 +6,8 @@ package Controlador.Inventariado;
 
 import DAO.Inventariado.ConsultaCategoria;
 import Modelo.Inventariado.Categoria_Mobiliario;
+import Modelo.Roles_Usuarios;
+import Modelo.Usuario;
 import Vista.Gestion_Categorias;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,11 +23,14 @@ public class ControlCategoria implements ActionListener {
 
     private Gestion_Categorias gesCat;
     private ConsultaCategoria conCat;
+    private Usuario usActivo;
 
-    public ControlCategoria(Gestion_Categorias gesCat, ConsultaCategoria conCat) {
+    public ControlCategoria(Gestion_Categorias gesCat, ConsultaCategoria conCat, Usuario usActivo) {
         this.gesCat = gesCat;
         this.conCat = conCat;
+        this.usActivo = usActivo;
         mostrarDatos();
+        opciones();
 
         this.gesCat.btn_agregar.addActionListener(this);
         this.gesCat.btn_editar.addActionListener(this);
@@ -33,6 +38,10 @@ public class ControlCategoria implements ActionListener {
         this.gesCat.btn_actualizar.addActionListener(this);
         this.gesCat.btn_obtener.addActionListener(this);
         this.gesCat.btn_limpiar.addActionListener(this);
+    }
+
+    public ControlCategoria() {
+
     }
 
     @Override
@@ -191,5 +200,38 @@ public class ControlCategoria implements ActionListener {
         gesCat.tabla_categoria.setModel(tcategoria);
 
     }
+    
+    public boolean esAdmin(){
+        
+        if (usActivo.getRol() == Roles_Usuarios.Administrador) {
+            return true;
+        }
+        return false;
+    }
 
+    public void opciones() {
+
+        if (esAdmin()) {
+            System.out.println("Es admin");
+        }
+        System.out.println("No es Admin"); 
+    }
+
+//    public static void main(String[] args) {
+//        
+//        Usuario usactivo = new Usuario();
+//        usactivo.setRol(Roles_Usuarios.Caja);
+//        usactivo.setPri_nombre("david");
+//        usactivo.setApe_paterno("jacinto");
+//        Gestion_Categorias gescat = new Gestion_Categorias();
+//        
+//        ControlCategoria concat = new ControlCategoria(gescat, usactivo);
+//        
+//        if (concat.esAdmin()) {
+//            System.out.println("Si es Admin");
+//        } else {
+//            System.out.println("No es Admin");
+//        }
+//        
+//    }
 }

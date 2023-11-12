@@ -47,8 +47,10 @@ public class Proyecto_Alquiler {
         ControladorGestionCLI conGESTCLI = new ControladorGestionCLI(gesCLI, conCL);
 
         ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI, gesCat);
+        conPri.mostrarPrincipal();
+        
         ControladorGestionUSINACTIVOS conUSINAC = new ControladorGestionUSINACTIVOS(gesUSINAC, conUsus);
-        ControlCategoria controCat = new ControlCategoria(gesCat, conCat);
+        ControlCategoria controCat = new ControlCategoria(gesCat, conCat, conPri.getUsActivo());
 
         log.setVisible(true);
     }
