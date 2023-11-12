@@ -9,23 +9,32 @@ package Modelo.Inventariado;
  * @author DAVID
  */
 public class Producto {
-    
+
     private int id;
     private String nom_pro;
     private Categoria_Mobiliario categoria;
     private float precio_uni;
+    private int cantDisponible;
+    private int cantPrestada;
+    private int cantMantenimiento;
 
-    public Producto(String nom_pro, Categoria_Mobiliario categoria, float precio_uni) {
-        this.nom_pro = nom_pro;
-        this.categoria = categoria;
-        this.precio_uni = precio_uni;
-    }
-
-    public Producto(int id, String nom_pro, Categoria_Mobiliario categoria, float precio_uni) {
+    public Producto(int id, String nom_pro, Categoria_Mobiliario categoria, float precio_uni, int cantDisponible, int cantPrestada, int cantMantenimiento) {
         this.id = id;
         this.nom_pro = nom_pro;
         this.categoria = categoria;
         this.precio_uni = precio_uni;
+        this.cantDisponible = cantDisponible;
+        this.cantPrestada = cantPrestada;
+        this.cantMantenimiento = cantMantenimiento;
+    }
+
+    public Producto(String nom_pro, Categoria_Mobiliario categoria, float precio_uni, int cantDisponible, int cantPrestada, int cantMantenimiento) {
+        this.nom_pro = nom_pro;
+        this.categoria = categoria;
+        this.precio_uni = precio_uni;
+        this.cantDisponible = cantDisponible;
+        this.cantPrestada = cantPrestada;
+        this.cantMantenimiento = cantMantenimiento;
     }
 
     public Producto() {
@@ -62,5 +71,32 @@ public class Producto {
     public void setPrecio_uni(float precio_uni) {
         this.precio_uni = precio_uni;
     }
+
+    public int getCantDisponible() {
+        return cantDisponible;
+    }
+
+    public void setCantDisponible(int cantDisponible) {
+        this.cantDisponible = cantDisponible;
+    }
+
+    public int getCantPrestada() {
+        return cantPrestada;
+    }
+
+    public void setCantPrestada(int cantPrestada) {
+        this.cantPrestada = cantPrestada;
+    }
+
+    public int getCantMantenimiento() {
+        return cantMantenimiento;
+    }
+
+    public void setCantMantenimiento(int cantMantenimiento) {
+        this.cantMantenimiento = cantMantenimiento;
+    }
+    
+    
+    
       
 }

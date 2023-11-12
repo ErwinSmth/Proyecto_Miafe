@@ -43,6 +43,9 @@ public class Nuevo_Producto {
         nuevoProducto.setNom_pro(producto.getNom_pro());
         nuevoProducto.setCategoria(producto.getCategoria());
         nuevoProducto.setPrecio_uni(producto.getPrecio_uni());
+        nuevoProducto.setCantDisponible(producto.getCantDisponible());//valor por defecto cuando se ingresen nuevos productos en la bd
+        nuevoProducto.setCantPrestada(0);
+        nuevoProducto.setCantMantenimiento(0);
 
         return nuevoProducto;
     }
