@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package DAO.Inventariado;
 
+import DAO.ConexionBD;
 import Modelo.Inventariado.Categoria_Mobiliario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,9 +22,14 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
     //2 Representa que hubo un error
     ConexionBD conectar = ConexionBD.getConexion();
 
+    //Retornara 3 en caso se quiera ingresar una categoria que ya esta repetida
     @Override
     public int agregar(Categoria_Mobiliario obj) {
 
+        if (catRepetido(obj.getNom_cat())) {
+            return 3;//La categoria ya existe en la bd
+        }
+        
         String consulta = "Insert into Categoria_Objeto(nombre_cat, descripcion) values (?,?)";
 
         PreparedStatement ps = null;
@@ -42,6 +48,24 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
         }
 
         return 2;
+
+    }
+
+    //Metodo para verificar si la categoria ya existe en la bd antes de agregar alguna
+    private boolean catRepetido(String nombre) {
+
+        String consulta = "SELECT * FROM Categoria_Objeto WHERE nombre_cat = ?";
+        try (PreparedStatement ps = conectar.conectar().prepareStatement(consulta)) {
+            ps.setString(1, nombre);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next(); // True si existe esa categoria en la bd
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
 
     }
 
@@ -130,5 +154,4 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
 //        }
 //
 //    }
-
 }

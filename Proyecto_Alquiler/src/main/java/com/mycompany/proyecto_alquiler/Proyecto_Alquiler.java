@@ -9,11 +9,14 @@ import Controlador.ControladorLogin;
 import Controlador.ControladorPrincipal;
 import Controlador.ControladorRegistroCLI;
 import Controlador.ControladorGestionCLI;
+import Controlador.Inventariado.ControlCategoria;
 
 import DAO.ConsultaUsuario;
 import DAO.ConsultaCliente;
+import DAO.Inventariado.ConsultaCategoria;
 
 import Modelo.Usuario;
+import Vista.Gestion_Categorias;
 
 import Vista.Gestion_Usuarios;
 import Vista.Gestion_UsuariosINACT;
@@ -28,6 +31,7 @@ public class Proyecto_Alquiler {
         Usuario us = new Usuario();
         ConsultaUsuario conUsus = new ConsultaUsuario();
         ConsultaCliente conCL = new ConsultaCliente();
+        ConsultaCategoria conCat = new ConsultaCategoria();
         Login log = new Login();
         Principal pri = new Principal();
 
@@ -36,13 +40,15 @@ public class Proyecto_Alquiler {
         Gestion_UsuariosINACT gesUSINAC = new Gestion_UsuariosINACT();
         RegistroClientes regisCLI = new RegistroClientes();
         Gestion_Clientes gesCLI = new Gestion_Clientes();
+        Gestion_Categorias gesCat = new Gestion_Categorias();
 
         ControladorGestionUS controGus = new ControladorGestionUS(gesUs, conUsus);
         ControladorRegistroCLI conREGCLI = new ControladorRegistroCLI(regisCLI, conCL);
         ControladorGestionCLI conGESTCLI = new ControladorGestionCLI(gesCLI, conCL);
 
-        ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI);
+        ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI, gesCat);
         ControladorGestionUSINACTIVOS conUSINAC = new ControladorGestionUSINACTIVOS(gesUSINAC, conUsus);
+        ControlCategoria controCat = new ControlCategoria(gesCat, conCat);
 
         log.setVisible(true);
     }

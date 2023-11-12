@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.Usuario;
+import Vista.Gestion_Categorias;
 import Vista.Gestion_Usuarios;
 import Vista.Gestion_UsuariosINACT;
 import Vista.Login;
@@ -15,7 +16,6 @@ import Vista.Gestion_Clientes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class ControladorPrincipal implements ActionListener {
 
     private Principal pri;
@@ -25,20 +25,25 @@ public class ControladorPrincipal implements ActionListener {
     private Login log;
     private RegistroClientes regisCLI;
     private Gestion_Clientes gestCLI;
+    private Gestion_Categorias gesCat;
 
-    public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, RegistroClientes regisCLI, Gestion_Clientes gestCLI) {
+    public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, RegistroClientes regisCLI,
+            Gestion_Clientes gestCLI, Gestion_Categorias gesCat) {
+        
         this.pri = pri;
         this.gesUs = gesUs;
-        this.log = log;        
+        this.log = log;
         this.gesUSINAC = gesUSINAC;
         this.regisCLI = regisCLI;
         this.gestCLI = gestCLI;
-        
+        this.gesCat = gesCat;
+
         this.pri.mni_Clientes.addActionListener(this);
         this.pri.mni_regCLIENTE.addActionListener(this);
         this.pri.mni_Us.addActionListener(this);
         this.pri.mni_USINAC.addActionListener(this);
         this.pri.btn_cerrar.addActionListener(this);
+        this.pri.mni_categoria.addActionListener(this);
     }
 
     public ControladorPrincipal(Principal pri, Usuario usActivo) {
@@ -55,21 +60,24 @@ public class ControladorPrincipal implements ActionListener {
         if (e.getSource() == pri.mni_Us) {
             pri.Escritorio.add(gesUs);
             gesUs.setVisible(true);
-        //Registro Clientes
+            //Registro Clientes
         } else if (e.getSource() == pri.mni_regCLIENTE) {
             pri.Escritorio.add(regisCLI);
             regisCLI.setVisible(true);
-        //Gestion  Clientes    
-        }else if (e.getSource() == pri.mni_Clientes) {
+            //Gestion  Clientes    
+        } else if (e.getSource() == pri.mni_Clientes) {
             pri.Escritorio.add(gestCLI);
             gestCLI.setVisible(true);
-        }else if (e.getSource() == pri.mni_USINAC) {
+        } else if (e.getSource() == pri.mni_USINAC) {
             pri.Escritorio.add(gesUSINAC);
             gesUSINAC.setVisible(true);
-        }  else if (e.getSource() == pri.btn_cerrar) {
+        } else if (e.getSource() == pri.btn_cerrar) {
             pri.dispose();
             log.setVisible(true);
             log.Limpiar();
+        } else if (e.getSource() == pri.mni_categoria) {
+            pri.Escritorio.add(gesCat);
+            gesCat.setVisible(true);
         }
 
     }
