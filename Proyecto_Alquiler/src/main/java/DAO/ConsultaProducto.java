@@ -196,7 +196,7 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
                         String consulta = "UPDATE Inventario\n"
                                 + "SET cant_mantenimiento = cant_mantenimiento + ?,\n"
                                 + "    cant_disponible = cant_disponible - ?\n"
-                                + "WHERE nombre = 'Silla artesanal';";
+                                + "WHERE nombre = ?;";
                         
                         ps = conectar.conectar().prepareStatement(consulta);
                         ps.setInt(1, cantidad);
