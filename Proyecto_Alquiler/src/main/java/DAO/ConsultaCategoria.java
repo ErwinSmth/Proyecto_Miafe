@@ -17,12 +17,14 @@ import java.util.List;
  */
 public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
 
+    //1 Representara que se agrego, elimino, etc correctamente
+    //2 Representa que hubo un error
     ConexionBD conectar = ConexionBD.getConexion();
 
     @Override
-    public boolean agregar(Categoria_Mobiliario obj) {
+    public int agregar(Categoria_Mobiliario obj) {
 
-        String consulta = "Insert into Categoria_Objeto(nombre, descripcion) values (?,?)";
+        String consulta = "Insert into Categoria_Objeto(nombre_cat, descripcion) values (?,?)";
 
         PreparedStatement ps = null;
 
@@ -33,20 +35,20 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
             ps.setString(2, obj.getDescrip());
             ps.executeUpdate();
 
-            return true;
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return 2;
 
     }
 
     @Override
-    public boolean eliminar(Categoria_Mobiliario obj) {
+    public int eliminar(Categoria_Mobiliario obj) {
 
-        String consulta = "Delete from Categoria_Objeto where nombre = ? ";
+        String consulta = "Delete from Categoria_Objeto where nombre_cat = ? ";
         PreparedStatement ps = null;
 
         try {
@@ -55,55 +57,37 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
             ps.setString(1, obj.getNom_cat());
             ps.executeUpdate();
 
-            return true;
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return 2;
 
     }
 
     @Override
-    public boolean editar(Categoria_Mobiliario obj) {
+    public int editar(Categoria_Mobiliario obj) {
 
-        String obtenerId = "Select id_categoria from Categoria_Objeto where nombre = ?";
+        String consulta = "UPDATE Categoria_Objeto SET descripcion = ? WHERE nombre_cat = ?";
         PreparedStatement ps = null;
 
         try {
 
-            int id = 0;
-            ps = conectar.conectar().prepareStatement(obtenerId);
-            ps.setString(1, obj.getNom_cat());
-            ResultSet rs = ps.executeQuery();
+            ps = conectar.conectar().prepareStatement(consulta);
+            ps.setString(1, obj.getDescrip());
+            ps.setString(2, obj.getNom_cat());
 
-            if (rs.next()) {
+            ps.executeUpdate();
 
-                id = rs.getInt("id_categoria");
-
-                if (id != 0) {
-
-                    String consulta = "Update Categoria_Objeto set descripcion = ? where id_categoria = ?";
-                    ps = conectar.conectar().prepareStatement(consulta);
-
-                    ps.setString(1, obj.getDescrip());
-                    ps.setInt(2, id);
-
-                    ps.executeUpdate();
-
-                    return true;
-
-                } else {
-                    return false;
-                }
-            }
+            return 1;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return 2;
 
     }
 
@@ -111,7 +95,7 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
     public List<Categoria_Mobiliario> getListado() {
 
         List<Categoria_Mobiliario> listado = new ArrayList<>();
-        String consulta = "Select nombre, descripcion from Categoria_Objeto";
+        String consulta = "Select nombre_cat, descripcion from Categoria_Objeto";
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -122,7 +106,7 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
 
             while (rs.next()) {
                 Categoria_Mobiliario cat = new Categoria_Mobiliario();
-                cat.setNom_cat(rs.getString("nombre"));
+                cat.setNom_cat(rs.getString("nombre_cat"));
                 cat.setDescrip(rs.getString("descripcion"));
 
                 listado.add(cat);
@@ -139,7 +123,7 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
 
         ConsultaCategoria con = new ConsultaCategoria();
         Categoria_Mobiliario cat = new Categoria_Mobiliario();
-        List<Categoria_Mobiliario> listado = con.getListado();   
+        List<Categoria_Mobiliario> listado = con.getListado();
 
         for (Categoria_Mobiliario obj : listado) {
             System.out.println("Nombre: " + obj.getNom_cat() + ", Descripcion: " + obj.getDescrip());

@@ -10,7 +10,6 @@ package Modelo.Inventariado;
  */
 public class Categoria_Mobiliario {
 
-    private int id;
     private String nom_cat;
     private String descrip;
 
@@ -19,21 +18,7 @@ public class Categoria_Mobiliario {
         this.descrip = descrip;
     }
 
-    public Categoria_Mobiliario(int id, String nom_cat, String descrip) {
-        this.id = id;
-        this.nom_cat = nom_cat;
-        this.descrip = descrip;
-    }
-
     public Categoria_Mobiliario() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNom_cat() {
@@ -51,5 +36,7 @@ public class Categoria_Mobiliario {
     public void setDescrip(String descrip) {
         this.descrip = descrip;
     }
+    
+    
 
 }

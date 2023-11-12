@@ -12,11 +12,14 @@ import java.util.List;
  */
 public interface InventarioDAO<T> {
     
-    public boolean agregar(T obj);
+    //1 Representara que se agrego, elimino, etc correctamente
+    //2 Representa que hubo un error
     
-    public boolean eliminar(T obj);
+    public int agregar(T obj);
     
-    public boolean editar(T obj);
+    public int eliminar(T obj);
+    
+    public int editar(T obj);
     
     public List<T> getListado();
     

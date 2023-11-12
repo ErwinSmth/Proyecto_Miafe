@@ -96,7 +96,11 @@ public class Producto {
         this.cantMantenimiento = cantMantenimiento;
     }
     
-    
-    
-      
+    public int total(){
+        
+        int total;
+        return  total = cantDisponible + cantMantenimiento + cantPrestada;
+        
+    }
+
 }
