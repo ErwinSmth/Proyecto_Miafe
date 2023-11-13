@@ -6,8 +6,6 @@ package Controlador.Inventariado;
 
 import DAO.Inventariado.ConsultaCategoria;
 import Modelo.Inventariado.Categoria_Mobiliario;
-import Modelo.Roles_Usuarios;
-import Modelo.Usuario;
 import Vista.Gestion_Categorias;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,14 +21,11 @@ public class ControlCategoria implements ActionListener {
 
     private Gestion_Categorias gesCat;
     private ConsultaCategoria conCat;
-    private Usuario usActivo;
 
-    public ControlCategoria(Gestion_Categorias gesCat, ConsultaCategoria conCat, Usuario usActivo) {
+    public ControlCategoria(Gestion_Categorias gesCat, ConsultaCategoria conCat) {
         this.gesCat = gesCat;
         this.conCat = conCat;
-        this.usActivo = usActivo;
         mostrarDatos();
-        opciones();
 
         this.gesCat.btn_agregar.addActionListener(this);
         this.gesCat.btn_editar.addActionListener(this);
@@ -102,29 +97,33 @@ public class ControlCategoria implements ActionListener {
 
             int fila = gesCat.tabla_categoria.getSelectedRow();
 
-            if (fila != -1) {
-                int rpa = JOptionPane.showConfirmDialog(null, "Desea continuar con la edicion?", "Confirmacion de edicion", JOptionPane.YES_NO_OPTION);
+            if (Vacio()) {
+                JOptionPane.showMessageDialog(null, "Obtenga una categoria para que la pueda editar");
+            } else {
+                if (fila != -1) {
+                    int rpa = JOptionPane.showConfirmDialog(null, "Desea continuar con la edicion?", "Confirmacion de edicion", JOptionPane.YES_NO_OPTION);
 
-                if (rpa == JOptionPane.YES_OPTION) {
+                    if (rpa == JOptionPane.YES_OPTION) {
 
-                    String nombre = (String) gesCat.tabla_categoria.getValueAt(fila, 0);
-                    Categoria_Mobiliario cat = new Categoria_Mobiliario();
-                    cat.setNom_cat(nombre);
-                    cat.setDescrip(gesCat.txa_desCat.getText());
+                        String nombre = (String) gesCat.tabla_categoria.getValueAt(fila, 0);
+                        Categoria_Mobiliario cat = new Categoria_Mobiliario();
+                        cat.setNom_cat(nombre);
+                        cat.setDescrip(gesCat.txa_desCat.getText());
 
-                    if (conCat.editar(cat) == 2) {
-                        JOptionPane.showMessageDialog(null, "Ocurrio un error durante la ejecucion");
-                    } else if (conCat.editar(cat) == 1) {
-                        JOptionPane.showMessageDialog(null, "Categoria Editada Exitosamente");
-                        mostrarDatos();
-                        limpiar();
-                        gesCat.btn_agregar.setEnabled(true);
-                        gesCat.txt_nomCat.setEnabled(true);
-                        gesCat.btn_limpiar.setEnabled(true);
+                        if (conCat.editar(cat) == 2) {
+                            JOptionPane.showMessageDialog(null, "Ocurrio un error durante la ejecucion");
+                        } else if (conCat.editar(cat) == 1) {
+                            JOptionPane.showMessageDialog(null, "Categoria Editada Exitosamente");
+                            mostrarDatos();
+                            limpiar();
+                            gesCat.btn_agregar.setEnabled(true);
+                            gesCat.txt_nomCat.setEnabled(true);
+                            gesCat.btn_limpiar.setEnabled(true);
+                        }
+
+                    } else {
+                        return;
                     }
-
-                } else {
-                    return;
                 }
             }
 
@@ -201,30 +200,23 @@ public class ControlCategoria implements ActionListener {
 
     }
     
-    public boolean esAdmin(){
-        
-        if (usActivo.getRol() == Roles_Usuarios.Administrador) {
-            return true;
-        }
-        return false;
-    }
+//    public void abierto(){
+//        if (pri.isVisible()) {
+//            esAdmin();
+//        }
+//    }
+//
+//    public void esAdmin() {
+//        String nombre = pri.lblnombre.getText();
+//        String apellido = pri.lblapellido.getText();
+//        String rol = pri.lblrol.getText();
+//
+//        if (!nombre.isEmpty() && !apellido.isEmpty() && !rol.isEmpty()) {
+//            System.out.println("Bienvenido Usuario: " + nombre + " " + apellido + " con el Rol: " + rol);
+//            // Tu lógica para el rol de administrador aquí
+//        } else {
+//            System.out.println("No es admin");
+//        }
+//    }
 
-    public void opciones() {
-
-        if (esAdmin()) {
-            System.out.println("Es admin");
-        }
-        System.out.println("No es Admin"); 
-    }
-
-    public static void main(String[] args) {
-        
-        Usuario usactivo = new Usuario();
-        usactivo.setRol(Roles_Usuarios.Caja);
-        usactivo.setPri_nombre("david");
-        usactivo.setApe_paterno("jacinto");
-        Gestion_Categorias gescat = new Gestion_Categorias();
-        
-        
-    }
 }

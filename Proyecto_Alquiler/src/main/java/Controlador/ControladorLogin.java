@@ -27,7 +27,7 @@ public class ControladorLogin implements ActionListener {
         this.us = us;
         this.log = log;
         this.conUsu = conUsu;
-        this.pri = pri;
+        this.pri = Principal.getInstancia();
         this.log.btn_ingresar.addActionListener(this);
 
     }
@@ -39,21 +39,22 @@ public class ControladorLogin implements ActionListener {
             us.setNum_doc(log.txt_numDOC.getText());
             us.setContraseña(log.txt_contra.getText());
             if (conUsu.Logearse(us)) {
-                
+
                 Usuario usLogeado = conUsu.getDatosUs(us.getNum_doc());
 
                 if (usLogeado != null) {
                     us.setPri_nombre(usLogeado.getPri_nombre());
                     us.setApe_paterno(usLogeado.getApe_paterno());
                     us.setRol(usLogeado.getRol());
-                    
+
                     JOptionPane.showMessageDialog(null, "Logeado Correctamente");
                     log.dispose();
-                    
+
                     //Inicializamos el controlador Principal
-                    ControladorPrincipal conPri = new ControladorPrincipal(pri, usLogeado);
+                    ControladorPrincipal conPri = new ControladorPrincipal(Principal.getInstancia() , usLogeado);
                     conPri.mostrarPrincipal();
-                }  else {
+                    Principal principal = Principal.getInstancia();
+                } else {
                     JOptionPane.showMessageDialog(null, "Error al obtener los datos del Usuario");
                 }
 

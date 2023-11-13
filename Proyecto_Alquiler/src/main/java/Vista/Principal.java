@@ -12,16 +12,25 @@ import java.awt.Dimension;
  */
 public class Principal extends javax.swing.JFrame {
 
+    private static Principal instance;
+    
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    private Principal() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
     }
     
+    
+    public static Principal getInstancia(){
+        if (instance == null) {
+            instance = new Principal();
+        }
+        return instance;
+    }
     
 
     /**
@@ -34,8 +43,13 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Escritorio = new javax.swing.JDesktopPane();
-        lblmensaje = new javax.swing.JLabel();
         btn_cerrar = new javax.swing.JButton();
+        inforPane = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblnombre = new javax.swing.JLabel();
+        lblapellido = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblrol = new javax.swing.JLabel();
         mnbar_barra = new javax.swing.JMenuBar();
         mnu_Us = new javax.swing.JMenu();
         mni_Us = new javax.swing.JMenuItem();
@@ -51,29 +65,62 @@ public class Principal extends javax.swing.JFrame {
 
         btn_cerrar.setText("Cerrar Sesion");
 
-        Escritorio.setLayer(lblmensaje, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel1.setText("Bienvenido Usuario:");
+
+        jLabel2.setText("con el Rol:");
+
+        javax.swing.GroupLayout inforPaneLayout = new javax.swing.GroupLayout(inforPane);
+        inforPane.setLayout(inforPaneLayout);
+        inforPaneLayout.setHorizontalGroup(
+            inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inforPaneLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lblnombre)
+                .addGap(18, 18, 18)
+                .addComponent(lblapellido)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(lblrol)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        inforPaneLayout.setVerticalGroup(
+            inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inforPaneLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblnombre)
+                    .addComponent(jLabel2)
+                    .addComponent(lblrol)
+                    .addComponent(lblapellido))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
         Escritorio.setLayer(btn_cerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(inforPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(inforPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                 .addComponent(btn_cerrar)
                 .addContainerGap())
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addComponent(btn_cerrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_cerrar)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(inforPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         mnu_Us.setText("Usuarios");
@@ -127,7 +174,10 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Escritorio)
+                .addContainerGap())
         );
 
         pack();
@@ -179,7 +229,12 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane Escritorio;
     public javax.swing.JButton btn_cerrar;
-    public javax.swing.JLabel lblmensaje;
+    public javax.swing.JPanel inforPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel lblapellido;
+    public javax.swing.JLabel lblnombre;
+    public javax.swing.JLabel lblrol;
     public javax.swing.JMenuBar mnbar_barra;
     public javax.swing.JMenuItem mni_Clientes;
     public javax.swing.JMenuItem mni_USINAC;

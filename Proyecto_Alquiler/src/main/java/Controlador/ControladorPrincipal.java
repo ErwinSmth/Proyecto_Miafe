@@ -5,6 +5,7 @@
 package Controlador;
 
 import Controlador.Inventariado.ControlCategoria;
+import DAO.Inventariado.ConsultaCategoria;
 import Modelo.Roles_Usuarios;
 import Modelo.Usuario;
 import Vista.Gestion_Categorias;
@@ -32,7 +33,7 @@ public class ControladorPrincipal implements ActionListener {
     public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, RegistroClientes regisCLI,
             Gestion_Clientes gestCLI, Gestion_Categorias gesCat) {
 
-        this.pri = pri;
+        this.pri = Principal.getInstancia();
         this.gesUs = gesUs;
         this.log = log;
         this.gesUSINAC = gesUSINAC;
@@ -46,12 +47,14 @@ public class ControladorPrincipal implements ActionListener {
         this.pri.mni_USINAC.addActionListener(this);
         this.pri.btn_cerrar.addActionListener(this);
         this.pri.mni_categoria.addActionListener(this);
+
     }
 
     public ControladorPrincipal(Principal pri, Usuario usActivo) {
-        this.pri = pri;
+        this.pri = Principal.getInstancia();
         this.usActivo = usActivo;
-        opciones();
+
+//        opciones();
     }
 
     public ControladorPrincipal() {
@@ -59,30 +62,29 @@ public class ControladorPrincipal implements ActionListener {
 
     //Retornada true si el usuario que esta logeado en ese momento es administrador
     //Retornada falso si es el de caja
-    public boolean esAdmin() {
-
-        if (usActivo.getRol() == Roles_Usuarios.Administrador) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public void opciones() {
-
-        //Si el usuario logeado si es Admin
-        if (esAdmin()) {
-            pri.mnu_Clientes.setVisible(false);
-        } else {
-            pri.mnu_Us.setVisible(false);
-        }
-
-    }
-
+//    public boolean esAdmin() {
+//
+//        if (usActivo.getRol() == Roles_Usuarios.Administrador) {
+//            return true;
+//        }
+//
+//        return false;
+//    }
+//
+//    public void opciones() {
+//
+//        //Si el usuario logeado si es Admin
+//        if (esAdmin()) {
+//            pri.mnu_Clientes.setVisible(false);
+//        } else {
+//            pri.mnu_Us.setVisible(false);
+//        }
+//
+//    }
+    
     public Usuario getUsActivo() {
         return usActivo;
     }
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -107,14 +109,18 @@ public class ControladorPrincipal implements ActionListener {
             log.Limpiar();
         } else if (e.getSource() == pri.mni_categoria) {
             pri.Escritorio.add(gesCat);
-            gesCat.setVisible(true);            
+            gesCat.setVisible(true);
         }
 
     }
 
     public void mostrarPrincipal() {
 
-        pri.lblmensaje.setText("Bienvenido Usuario: " + usActivo.getPri_nombre() + " " + usActivo.getApe_paterno() + " con el Rol: " + usActivo.getRol());
+        pri.lblnombre.setText(usActivo.getPri_nombre());
+        pri.lblapellido.setText(usActivo.getApe_paterno());
+        pri.lblrol.setText(usActivo.getRol().name());
+
+//        pri.lblmensaje.setText("Bienvenido Usuario: " + usActivo.getPri_nombre() + " " + usActivo.getApe_paterno() + " con el Rol: " + usActivo.getRol());
         pri.setVisible(true);
 
     }
