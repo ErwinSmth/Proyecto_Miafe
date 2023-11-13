@@ -32,13 +32,7 @@ public class ControlProducto implements ActionListener{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public void limpiar(){
-        
-        pro.txt_nomb.setText("");
-        pro.txt_cant.setText("");
-        pro.txt_precio.setText("");
-        
-    }
+
     
     
 }
