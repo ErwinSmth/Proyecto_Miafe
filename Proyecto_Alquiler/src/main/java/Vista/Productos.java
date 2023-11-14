@@ -39,6 +39,8 @@ public class Productos extends javax.swing.JInternalFrame {
         btn_agregar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_editarPre = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cbo_CATE = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
 
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
@@ -74,15 +76,15 @@ public class Productos extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 24, -1, -1));
 
         jLabel2.setText("Cantidad a Agregar");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 80, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         txt_nomb.setToolTipText("");
         jPanel2.add(txt_nomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 28, 195, -1));
-        jPanel2.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 91, -1));
+        jPanel2.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 150, -1));
 
         jLabel5.setText("Precio");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
-        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 67, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 180, -1));
 
         btn_agregar.setText("Agregar");
         jPanel2.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
@@ -92,6 +94,11 @@ public class Productos extends javax.swing.JInternalFrame {
 
         btn_editarPre.setText("Editar Precio");
         jPanel2.add(btn_editarPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, -1, -1));
+
+        jLabel3.setText("Categorias");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        jPanel2.add(cbo_CATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,9 +111,9 @@ public class Productos extends javax.swing.JInternalFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(22, 22, 22)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,9 +122,9 @@ public class Productos extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                .addGap(56, 56, 56))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -125,19 +132,21 @@ public class Productos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_agregar;
-    private javax.swing.JButton btn_editarPre;
-    private javax.swing.JButton btn_eliminar;
+    public javax.swing.JButton btn_agregar;
+    public javax.swing.JButton btn_editarPre;
+    public javax.swing.JButton btn_eliminar;
+    public javax.swing.JComboBox<String> cbo_CATE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tabla_producto;
-    private javax.swing.JTextField txt_cant;
-    private javax.swing.JTextField txt_nomb;
-    private javax.swing.JTextField txt_precio;
+    public javax.swing.JTable tabla_producto;
+    public javax.swing.JTextField txt_cant;
+    public javax.swing.JTextField txt_nomb;
+    public javax.swing.JTextField txt_precio;
     // End of variables declaration//GEN-END:variables
 }

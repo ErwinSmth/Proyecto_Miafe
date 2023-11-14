@@ -60,6 +60,8 @@ public class Principal extends javax.swing.JFrame {
         mni_Clientes = new javax.swing.JMenuItem();
         mnu_categorias = new javax.swing.JMenu();
         mni_categoria = new javax.swing.JMenuItem();
+        mnu_inventario = new javax.swing.JMenu();
+        mni_productos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,6 +166,13 @@ public class Principal extends javax.swing.JFrame {
 
         mnbar_barra.add(mnu_categorias);
 
+        mnu_inventario.setText("Inventario");
+
+        mni_productos.setText("Productos");
+        mnu_inventario.add(mni_productos);
+
+        mnbar_barra.add(mnu_inventario);
+
         setJMenuBar(mnbar_barra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -240,10 +249,12 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JMenuItem mni_USINAC;
     public javax.swing.JMenuItem mni_Us;
     public javax.swing.JMenuItem mni_categoria;
+    private javax.swing.JMenuItem mni_productos;
     public javax.swing.JMenuItem mni_regCLIENTE;
     public javax.swing.JMenu mnu_Alquiler;
     public javax.swing.JMenu mnu_Clientes;
     public javax.swing.JMenu mnu_Us;
     public javax.swing.JMenu mnu_categorias;
+    private javax.swing.JMenu mnu_inventario;
     // End of variables declaration//GEN-END:variables
 }
