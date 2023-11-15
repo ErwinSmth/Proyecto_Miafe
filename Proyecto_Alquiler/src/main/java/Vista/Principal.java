@@ -249,12 +249,12 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JMenuItem mni_USINAC;
     public javax.swing.JMenuItem mni_Us;
     public javax.swing.JMenuItem mni_categoria;
-    private javax.swing.JMenuItem mni_productos;
+    public javax.swing.JMenuItem mni_productos;
     public javax.swing.JMenuItem mni_regCLIENTE;
     public javax.swing.JMenu mnu_Alquiler;
     public javax.swing.JMenu mnu_Clientes;
     public javax.swing.JMenu mnu_Us;
     public javax.swing.JMenu mnu_categorias;
-    private javax.swing.JMenu mnu_inventario;
+    public javax.swing.JMenu mnu_inventario;
     // End of variables declaration//GEN-END:variables
 }

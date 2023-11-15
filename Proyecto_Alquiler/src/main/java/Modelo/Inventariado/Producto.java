@@ -36,6 +36,15 @@ public class Producto {
         this.cantPrestada = cantPrestada;
         this.cantMantenimiento = cantMantenimiento;
     }
+    
+      public Producto(String nom_pro, Categoria_Mobiliario categoria, float precio_uni, int cantDisponible) {
+        this.nom_pro = nom_pro;
+        this.categoria = categoria;
+        this.precio_uni = precio_uni;
+        this.cantDisponible = cantDisponible;
+      
+    }
+
 
     public Producto() {
     }

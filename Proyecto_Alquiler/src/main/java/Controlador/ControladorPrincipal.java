@@ -5,10 +5,16 @@
 package Controlador;
 
 import Controlador.Inventariado.ControlCategoria;
+import Controlador.Inventariado.ControlProducto;
+
 import DAO.Inventariado.ConsultaCategoria;
+import DAO.Inventariado.ConsultaProducto;
+
 import Modelo.Roles_Usuarios;
 import Modelo.Usuario;
+
 import Vista.Gestion_Categorias;
+import Vista.Productos;
 import Vista.Gestion_Usuarios;
 import Vista.Gestion_UsuariosINACT;
 import Vista.Login;
@@ -29,9 +35,10 @@ public class ControladorPrincipal implements ActionListener {
     private RegistroClientes regisCLI;
     private Gestion_Clientes gestCLI;
     private Gestion_Categorias gesCat;
+    private Productos gesPRO;
 
-    public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, RegistroClientes regisCLI,
-            Gestion_Clientes gestCLI, Gestion_Categorias gesCat) {
+    public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, 
+            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Productos gesPRO) {
 
         this.pri = Principal.getInstancia();
         this.gesUs = gesUs;
@@ -40,6 +47,7 @@ public class ControladorPrincipal implements ActionListener {
         this.regisCLI = regisCLI;
         this.gestCLI = gestCLI;
         this.gesCat = gesCat;
+        this.gesPRO=gesPRO;
 
         this.pri.mni_Clientes.addActionListener(this);
         this.pri.mni_regCLIENTE.addActionListener(this);
@@ -47,6 +55,7 @@ public class ControladorPrincipal implements ActionListener {
         this.pri.mni_USINAC.addActionListener(this);
         this.pri.btn_cerrar.addActionListener(this);
         this.pri.mni_categoria.addActionListener(this);
+        this.pri.mni_productos.addActionListener(this);
 
     }
 
@@ -110,6 +119,9 @@ public class ControladorPrincipal implements ActionListener {
         } else if (e.getSource() == pri.mni_categoria) {
             pri.Escritorio.add(gesCat);
             gesCat.setVisible(true);
+        }else if (e.getSource() == pri.mni_productos) {
+            pri.Escritorio.add(gesPRO);
+            gesPRO.setVisible(true);
         }
 
     }

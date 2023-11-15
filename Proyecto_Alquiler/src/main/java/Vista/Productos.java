@@ -43,6 +43,8 @@ public class Productos extends javax.swing.JInternalFrame {
         cbo_CATE = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
 
+        setClosable(true);
+
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

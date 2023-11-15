@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import DAO.Inventariado.ConsultaCategoria;
 import Modelo.Inventariado.Categoria_Mobiliario;
 import java.util.List;
+import javax.swing.JOptionPane;
+
+import Modelo.Inventariado.Producto;
 
 public class ControlProducto implements ActionListener {
 
@@ -23,16 +26,46 @@ public class ControlProducto implements ActionListener {
         this.pro = pro;
         this.conCat = conCat;
 
-        pro.btn_agregar.addActionListener(this);
-        pro.btn_editarPre.addActionListener(this);
-        pro.btn_eliminar.addActionListener(this);
-        pro.cbo_CATE.addActionListener(this);
+        this.pro.btn_agregar.addActionListener(this);
+        this.pro.btn_editarPre.addActionListener(this);
+        this.pro.btn_eliminar.addActionListener(this);
+        this.pro.cbo_CATE.addActionListener(this);
         LLENARCOMBO();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() == pro.btn_agregar) {
+            if (camposVacios()) {
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos obligatorios.");
+
+            } else {
+
+                Producto prod;
+                String nombre = pro.txt_nomb.getText();
+                String categoria = pro.cbo_CATE.getSelectedItem().toString();
+                String precio = pro.txt_precio.getText();
+                String cantidad = pro.txt_cant.getText();
+
+                
+
+               
+                prod = new Producto(nombre, categoria, precio, cantidad);
+                
+
+                if (conUs.nDocRepe(us.getNum_doc())) {
+                    JOptionPane.showMessageDialog(null, "Este numero de Documento ya esta registrado");
+                } else if (conUs.Registrar(us)) {
+                    JOptionPane.showMessageDialog(null, "Usuario Registrado correctamente");
+                    mostrarDatos();
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en el registro del usuario");
+                    limpiar();
+                }
+            }
+
+        }
     }
 
     public void LLENARCOMBO() {
@@ -55,6 +88,15 @@ public class ControlProducto implements ActionListener {
         pro.txt_cant.setText("");
         pro.txt_precio.setText("");
 
+    }
+
+    public boolean camposVacios() {
+        if (pro.txt_nomb.getText().isEmpty() || pro.txt_cant.getText().isEmpty()
+                || pro.txt_precio.getText().isEmpty()) {
+            return true; // Devuelve true si hay campos vacíos.
+        } else {
+            return false; // Devuelve false si no hay campos vacíos.
+        }
     }
 
 }

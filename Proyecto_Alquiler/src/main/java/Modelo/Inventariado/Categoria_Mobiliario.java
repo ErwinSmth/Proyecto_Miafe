@@ -17,6 +17,8 @@ public class Categoria_Mobiliario {
         this.nom_cat = nom_cat;
         this.descrip = descrip;
     }
+    
+
 
     public Categoria_Mobiliario() {
     }
