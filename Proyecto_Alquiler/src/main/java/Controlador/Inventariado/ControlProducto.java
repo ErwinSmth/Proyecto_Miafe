@@ -50,6 +50,8 @@ public class ControlProducto implements ActionListener {
                 prod = new Producto(nombre, new Categoria_Mobiliario(categoria, ""), precio, cantidad);
 
 
+                
+
             }
 
         }
