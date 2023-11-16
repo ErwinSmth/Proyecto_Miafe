@@ -44,25 +44,12 @@ public class ControlProducto implements ActionListener {
                 Producto prod;
                 String nombre = pro.txt_nomb.getText();
                 String categoria = pro.cbo_CATE.getSelectedItem().toString();
-                String precio = pro.txt_precio.getText();
-                String cantidad = pro.txt_cant.getText();
+                float precio = Float.parseFloat(pro.txt_precio.getText());
+                int cantidad = Integer.parseInt(pro.txt_cant.getText());
 
-                
+                prod = new Producto(nombre, new Categoria_Mobiliario(categoria, ""), precio, cantidad);
 
-               
-                prod = new Producto(nombre, categoria, precio, cantidad);
-                
 
-                if (conUs.nDocRepe(us.getNum_doc())) {
-                    JOptionPane.showMessageDialog(null, "Este numero de Documento ya esta registrado");
-                } else if (conUs.Registrar(us)) {
-                    JOptionPane.showMessageDialog(null, "Usuario Registrado correctamente");
-                    mostrarDatos();
-                    limpiar();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error en el registro del usuario");
-                    limpiar();
-                }
             }
 
         }
