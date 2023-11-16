@@ -29,6 +29,7 @@ public class Productos extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_producto = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,6 +42,9 @@ public class Productos extends javax.swing.JInternalFrame {
         btn_editarPre = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cbo_CATE = new javax.swing.JComboBox<>();
+        btn_actualizar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
+        btn_obtener = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
@@ -55,21 +59,29 @@ public class Productos extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla_producto);
 
+        jLabel4.setText("PRODUCTOS REGISTRADOS");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addGap(281, 281, 281)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,12 +107,20 @@ public class Productos extends javax.swing.JInternalFrame {
         jPanel2.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         btn_editarPre.setText("Editar Precio");
-        jPanel2.add(btn_editarPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, -1, -1));
+        jPanel2.add(btn_editarPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
 
         jLabel3.setText("Categorias");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-
         jPanel2.add(cbo_CATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+
+        btn_actualizar.setText("Actualizar");
+        jPanel2.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
+
+        btn_limpiar.setText("CLEAN");
+        jPanel2.add(btn_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
+
+        btn_obtener.setText("Obtener");
+        jPanel2.add(btn_obtener, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,17 +135,17 @@ public class Productos extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
 
@@ -134,13 +154,17 @@ public class Productos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_actualizar;
     public javax.swing.JButton btn_agregar;
     public javax.swing.JButton btn_editarPre;
     public javax.swing.JButton btn_eliminar;
+    public javax.swing.JButton btn_limpiar;
+    public javax.swing.JButton btn_obtener;
     public javax.swing.JComboBox<String> cbo_CATE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

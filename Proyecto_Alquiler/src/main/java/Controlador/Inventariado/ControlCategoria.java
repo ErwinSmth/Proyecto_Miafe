@@ -61,7 +61,7 @@ public class ControlCategoria implements ActionListener {
                         JOptionPane.showMessageDialog(null, "Ocurrio un Error durante la Ejecucion");
                         break;
                     case 1:
-                        JOptionPane.showMessageDialog(null, "Categoria Agegada Exitosamente");
+                        JOptionPane.showMessageDialog(null, "Categoria agregada exitosamente");
                         mostrarDatos();
                         limpiar();
                         break;
