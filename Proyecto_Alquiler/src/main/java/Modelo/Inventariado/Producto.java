@@ -36,15 +36,20 @@ public class Producto {
         this.cantPrestada = cantPrestada;
         this.cantMantenimiento = cantMantenimiento;
     }
-    
-      public Producto(String nom_pro, Categoria_Mobiliario categoria, float precio_uni, int cantDisponible) {
+
+    public Producto(String nom_pro, Categoria_Mobiliario categoria, float precio_uni, int cantDisponible) {
         this.nom_pro = nom_pro;
         this.categoria = categoria;
         this.precio_uni = precio_uni;
         this.cantDisponible = cantDisponible;
-      
+
     }
 
+    public Producto(String nom_pro, Categoria_Mobiliario categoria, float precio_uni) {
+        this.nom_pro = nom_pro;
+        this.categoria = categoria;
+        this.precio_uni = precio_uni;
+    }
 
     public Producto() {
     }
@@ -104,12 +109,12 @@ public class Producto {
     public void setCantMantenimiento(int cantMantenimiento) {
         this.cantMantenimiento = cantMantenimiento;
     }
-    
-    public int total(){
-        
+
+    public int total() {
+
         int total;
-        return  total = cantDisponible + cantMantenimiento + cantPrestada;
-        
+        return total = cantDisponible + cantMantenimiento + cantPrestada;
+
     }
 
 }
