@@ -10,56 +10,60 @@ import Controlador.ControladorPrincipal;
 import Controlador.ControladorRegistroCLI;
 import Controlador.ControladorGestionCLI;
 import Controlador.Inventariado.ControlCategoria;
-import Controlador.Inventariado.ControlProducto;//este
+import Controlador.Inventariado.Control_AgregarPro;//este
+import Controlador.Inventariado.Control_Producto;
 
 import DAO.ConsultaUsuario;
 import DAO.ConsultaCliente;
 import DAO.Inventariado.ConsultaCategoria;
 import DAO.Inventariado.ConsultaProducto;//este
-
 import Modelo.Usuario;
+
+
 import Vista.Gestion_Categorias;
-import Vista.Productos;//este
+import Vista.Agregar_Productos;//este
 import Vista.Gestion_Usuarios;
 import Vista.Gestion_UsuariosINACT;
 import Vista.Login;
 import Vista.Principal;
 import Vista.RegistroClientes;
 import Vista.Gestion_Clientes;
+import Vista.Gestion_Productos;
 
 public class Proyecto_Alquiler {
 
     public static void main(String[] args) {
+        
         Usuario us = new Usuario();
+        
         ConsultaUsuario conUsus = new ConsultaUsuario();
         ConsultaCliente conCL = new ConsultaCliente();
         ConsultaCategoria conCat = new ConsultaCategoria();
-        ConsultaProducto conPRO=new ConsultaProducto();//este
+        ConsultaProducto conPRO = new ConsultaProducto();
         
         Login log = new Login();
         Principal pri = Principal.getInstancia();
 
         ControladorLogin contUsu = new ControladorLogin(us, log, conUsus, pri);
-        
+
         Gestion_Usuarios gesUs = new Gestion_Usuarios();
         Gestion_UsuariosINACT gesUSINAC = new Gestion_UsuariosINACT();
         RegistroClientes regisCLI = new RegistroClientes();
         Gestion_Clientes gesCLI = new Gestion_Clientes();
         Gestion_Categorias gesCat = new Gestion_Categorias();
-       Productos gesPRO=new Productos();//este
+        Agregar_Productos gesPRO = new Agregar_Productos();
+        Gestion_Productos Proges = new Gestion_Productos();
 
         ControladorGestionUS controGus = new ControladorGestionUS(gesUs, conUsus);
         ControladorRegistroCLI conREGCLI = new ControladorRegistroCLI(regisCLI, conCL);
         ControladorGestionCLI conGESTCLI = new ControladorGestionCLI(gesCLI, conCL);
-        
-        
-        ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI, gesCat,gesPRO);
-        
+        Control_Producto conPro = new Control_Producto(conPRO, Proges);
+
+        ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI, gesCat, gesPRO, Proges);
+
         ControladorGestionUSINACTIVOS conUSINAC = new ControladorGestionUSINACTIVOS(gesUSINAC, conUsus);
         ControlCategoria controCat = new ControlCategoria(gesCat, conCat);
-        ControlProducto controPRO=new ControlProducto(conPRO, gesPRO, conCat);
-        
-        
+        Control_AgregarPro controPRO = new Control_AgregarPro(conPRO, gesPRO, conCat);
 
         log.setVisible(true);
     }

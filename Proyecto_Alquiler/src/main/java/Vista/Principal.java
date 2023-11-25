@@ -62,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
         mni_categoria = new javax.swing.JMenuItem();
         mnu_inventario = new javax.swing.JMenu();
         mni_productos = new javax.swing.JMenuItem();
+        mni_gesPro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,6 +172,9 @@ public class Principal extends javax.swing.JFrame {
         mni_productos.setText("Productos");
         mnu_inventario.add(mni_productos);
 
+        mni_gesPro.setText("Gestion de Productos");
+        mnu_inventario.add(mni_gesPro);
+
         mnbar_barra.add(mnu_inventario);
 
         setJMenuBar(mnbar_barra);
@@ -249,6 +253,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JMenuItem mni_USINAC;
     public javax.swing.JMenuItem mni_Us;
     public javax.swing.JMenuItem mni_categoria;
+    public javax.swing.JMenuItem mni_gesPro;
     public javax.swing.JMenuItem mni_productos;
     public javax.swing.JMenuItem mni_regCLIENTE;
     public javax.swing.JMenu mnu_Alquiler;

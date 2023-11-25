@@ -5,7 +5,7 @@
 package Controlador;
 
 import Controlador.Inventariado.ControlCategoria;
-import Controlador.Inventariado.ControlProducto;
+import Controlador.Inventariado.Control_AgregarPro;
 
 import DAO.Inventariado.ConsultaCategoria;
 import DAO.Inventariado.ConsultaProducto;
@@ -14,13 +14,14 @@ import Modelo.Roles_Usuarios;
 import Modelo.Usuario;
 
 import Vista.Gestion_Categorias;
-import Vista.Productos;
+import Vista.Agregar_Productos;
 import Vista.Gestion_Usuarios;
 import Vista.Gestion_UsuariosINACT;
 import Vista.Login;
 import Vista.Principal;
 import Vista.RegistroClientes;
 import Vista.Gestion_Clientes;
+import Vista.Gestion_Productos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,10 +36,11 @@ public class ControladorPrincipal implements ActionListener {
     private RegistroClientes regisCLI;
     private Gestion_Clientes gestCLI;
     private Gestion_Categorias gesCat;
-    private Productos gesPRO;
+    private Agregar_Productos gesPRO;
+    private Gestion_Productos Proges;
 
     public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, 
-            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Productos gesPRO) {
+            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Agregar_Productos gesPRO, Gestion_Productos Proges) {
 
         this.pri = Principal.getInstancia();
         this.gesUs = gesUs;
@@ -48,6 +50,7 @@ public class ControladorPrincipal implements ActionListener {
         this.gestCLI = gestCLI;
         this.gesCat = gesCat;
         this.gesPRO=gesPRO;
+        this.Proges = Proges;
 
         this.pri.mni_Clientes.addActionListener(this);
         this.pri.mni_regCLIENTE.addActionListener(this);
@@ -56,6 +59,7 @@ public class ControladorPrincipal implements ActionListener {
         this.pri.btn_cerrar.addActionListener(this);
         this.pri.mni_categoria.addActionListener(this);
         this.pri.mni_productos.addActionListener(this);
+        this.pri.mni_gesPro.addActionListener(this);
 
     }
 
@@ -122,6 +126,9 @@ public class ControladorPrincipal implements ActionListener {
         }else if (e.getSource() == pri.mni_productos) {
             pri.Escritorio.add(gesPRO);
             gesPRO.setVisible(true);
+        }else if (e.getSource() == pri.mni_gesPro) {
+            pri.Escritorio.add(Proges);
+            Proges.setVisible(true);
         }
 
     }

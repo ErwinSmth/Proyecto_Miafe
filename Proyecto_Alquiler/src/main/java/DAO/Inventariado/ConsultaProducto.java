@@ -22,17 +22,33 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
     //1 Representara que se agrego, elimino, etc correctamente
     //2 Representa que hubo un error
     ConexionBD conectar = ConexionBD.getConexion();
-
+    
     //Metodo para agregar un producto al inventario por defecto solo permitira agregar objetos que estan disponibles a prestar
     //Retornada 3 en caso los productos a agregar sean negativo o cero
     //Retornada 4 en caso el precio a insertar sea negatico o cero
+    //Retornara 5 en caso se intente agregar un producto ya existente en la bd
     @Override
     public int agregar(Producto obj) {
 
         String consulta = "Insert into Inventario (nombre_cat, nombre, cant_disponible, precio) values (?,?,?,?)";
+        String repetido = "SELECT COUNT(*) FROM inventario WHERE nombre = ?";
         PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
+            
+            ps = conectar.conectar().prepareStatement(repetido);
+            ps.setString(1, obj.getNom_pro());
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                int contar = rs.getInt(1);
+                
+                if (contar > 0) {
+                    return 5;
+                }
+            } 
+            
 
             ps = conectar.conectar().prepareStatement(consulta);
             ps.setString(1, obj.getCategoria().getNom_cat());
@@ -77,6 +93,7 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
     }
 
     //Metodo para editar el precio de un producto
+    //Retornara 3 en caso el precio a agregar sea 0 o negativo
     @Override
     public int editar(Producto obj) {
 
@@ -89,6 +106,10 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
             ps.setFloat(1, obj.getPrecio_uni());
             ps.setString(2, obj.getNom_pro());
 
+            if (obj.getPrecio_uni() <= 0) {
+                return 3;
+            }
+            
             ps.executeUpdate();
 
             return 1;

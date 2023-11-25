@@ -5,7 +5,7 @@
 package Controlador.Inventariado;
 
 import DAO.Inventariado.ConsultaProducto;
-import Vista.Productos;
+import Vista.Agregar_Productos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import DAO.Inventariado.ConsultaCategoria;
@@ -15,21 +15,20 @@ import javax.swing.JOptionPane;
 
 import Modelo.Inventariado.Producto;
 
-public class ControlProducto implements ActionListener {
+public class Control_AgregarPro implements ActionListener {
 
     private ConsultaProducto conPro;
-    private Productos pro;
+    private Agregar_Productos pro;
     private ConsultaCategoria conCat;
 
-    public ControlProducto(ConsultaProducto conPro, Productos pro, ConsultaCategoria conCat) {
+    public Control_AgregarPro(ConsultaProducto conPro, Agregar_Productos pro, ConsultaCategoria conCat) {
         this.conPro = conPro;
         this.pro = pro;
         this.conCat = conCat;
 
         this.pro.btn_agregar.addActionListener(this);
-        this.pro.btn_editarPre.addActionListener(this);
-        this.pro.btn_eliminar.addActionListener(this);
         this.pro.cbo_CATE.addActionListener(this);
+        this.pro.btn_actualizar.addActionListener(this);
         LLENARCOMBO();
     }
 
@@ -47,21 +46,42 @@ public class ControlProducto implements ActionListener {
                 float precio = Float.parseFloat(pro.txt_precio.getText());
                 int cantidad = Integer.parseInt(pro.txt_cant.getText());
 
-                prod = new Producto(nombre, new Categoria_Mobiliario(categoria, ""), precio, cantidad);
-
-
+                prod = new Producto(nombre, new Categoria_Mobiliario(categoria), precio, cantidad);
+                
+                switch (conPro.agregar(prod)) {
+                    case 1:
+                        JOptionPane.showMessageDialog(null, "Se agrego el producto Correctamente");
+                        limpiar();
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(null, "Ocurrio un error");
+                        break;
+                    case 3:
+                        JOptionPane.showMessageDialog(null, "La cantidad a agregar deber ser mayor a 0");
+                        break;
+                    case 4:
+                        JOptionPane.showMessageDialog(null, "El precio debe ser mayor a 0");
+                        break;
+                    case 5:
+                        JOptionPane.showMessageDialog(null, "El producto a agregar ya existe");
+                        break;
+                    default:
+                        break;
+                }
                 
 
             }
 
+        } else if (e.getSource() == pro.btn_actualizar) {
+            pro.cbo_CATE.removeAllItems();
+            LLENARCOMBO();
+            
         }
     }
 
     public void LLENARCOMBO() {
 
         List<Categoria_Mobiliario> categorias = conCat.getListado();
-
-        String[] datos = new String[2];
 
         for (Categoria_Mobiliario listacat : categorias) {
 
