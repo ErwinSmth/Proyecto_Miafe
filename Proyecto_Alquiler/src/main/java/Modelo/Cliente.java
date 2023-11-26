@@ -10,6 +10,7 @@ package Modelo;
  */
 public class Cliente extends Persona {
 
+    private String id_cliente;
     private String correo;
     private String direccion;
     private String telefono;
@@ -57,4 +58,14 @@ public class Cliente extends Persona {
         this.telefono = telefono;
     }
 
+    public String getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(String id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+    
+    
 }
