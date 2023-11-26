@@ -1,8 +1,11 @@
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\DAO\ConsultaUsuario.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\DAO\Servicio\AlquilerDAO.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\AgregarItems.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Cliente.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Estado_Persona.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\ControladorLogin.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\Agregar_Productos.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\RegistrarAlquiler.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\DAO\EntidadDAO.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\DAO\Inventariado\ConsultaProducto.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Usuario.java
@@ -13,6 +16,7 @@ C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proy
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\DAO\ConsultaCliente.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\Principal.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\ControladorGestionCLI.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\Servicio\Control_RegistroAlquiler.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Inventariado\Nuevo_Producto.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Tipo_Documentos.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\Gestion_Clientes.java
@@ -22,6 +26,7 @@ C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proy
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\DAO\Inventariado\ConsultaCategoria.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Inventariado\Producto.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\Gestion_UsuariosINACT.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Servicio\ContratoAlquiler.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Persona.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\com\mycompany\proyecto_alquiler\Proyecto_Alquiler.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\Login.java
@@ -31,6 +36,8 @@ C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proy
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\Inventariado\Control_Producto.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\Inventariado\ControlCategoria.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\ControladorGestionUS.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Servicio\Item.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Vista\Gestion_Categorias.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\Inventariado\Control_AgregarPro.java
 C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Modelo\Inventariado\Categoria_Mobiliario.java
+C:\Users\DAVID\OneDrive - Universidad Tecnologica del Peru\Documents\GitHub\Proyecto_Miafe\Proyecto_Alquiler\src\main\java\Controlador\Servicio\Control_AgregarItem.java

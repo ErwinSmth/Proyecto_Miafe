@@ -5,8 +5,10 @@ DAO\ConexionBD.class
 Modelo\Estado_Persona.class
 DAO\Inventariado\ConsultaProducto.class
 Vista\Gestion_Productos.class
+Vista\RegistrarAlquiler.class
 Vista\RegistroClientes.class
 Controlador\Inventariado\Control_Producto.class
+Controlador\Servicio\Control_AgregarItem.class
 DAO\EntidadDAO.class
 Vista\Gestion_Clientes$1.class
 Vista\Principal$2.class
@@ -26,6 +28,7 @@ Controlador\Inventariado\Control_Producto$1.class
 DAO\ConsultaUsuario$1.class
 Controlador\ControladorPrincipal.class
 Vista\Agregar_Productos.class
+Controlador\Servicio\Control_RegistroAlquiler.class
 Vista\Principal$1.class
 DAO\Inventariado\ConsultaCategoria.class
 Vista\Gestion_Categorias.class
@@ -48,4 +51,8 @@ Controlador\Inventariado\Control_AgregarPro.class
 Controlador\ControladorGestionCLI$2.class
 Vista\Principal$3.class
 Controlador\Inventariado\ControlCategoria$1.class
+Modelo\Servicio\Item.class
+DAO\Servicio\AlquilerDAO.class
+Modelo\Servicio\ContratoAlquiler.class
 Controlador\ControladorGestionUS$1.class
+Vista\AgregarItems.class

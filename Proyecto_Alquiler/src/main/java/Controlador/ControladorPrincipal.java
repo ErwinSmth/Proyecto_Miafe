@@ -22,6 +22,7 @@ import Vista.Principal;
 import Vista.RegistroClientes;
 import Vista.Gestion_Clientes;
 import Vista.Gestion_Productos;
+import Vista.RegistrarAlquiler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,9 +39,10 @@ public class ControladorPrincipal implements ActionListener {
     private Gestion_Categorias gesCat;
     private Agregar_Productos gesPRO;
     private Gestion_Productos Proges;
+    private RegistrarAlquiler regAlqui;
 
     public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, 
-            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Agregar_Productos gesPRO, Gestion_Productos Proges) {
+            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Agregar_Productos gesPRO, Gestion_Productos Proges, RegistrarAlquiler regAlqui) {
 
         this.pri = Principal.getInstancia();
         this.gesUs = gesUs;
@@ -51,6 +53,7 @@ public class ControladorPrincipal implements ActionListener {
         this.gesCat = gesCat;
         this.gesPRO=gesPRO;
         this.Proges = Proges;
+        this.regAlqui = regAlqui;
 
         this.pri.mni_Clientes.addActionListener(this);
         this.pri.mni_regCLIENTE.addActionListener(this);
@@ -60,6 +63,8 @@ public class ControladorPrincipal implements ActionListener {
         this.pri.mni_categoria.addActionListener(this);
         this.pri.mni_productos.addActionListener(this);
         this.pri.mni_gesPro.addActionListener(this);
+        
+        pri.Escritorio.add(regAlqui);
 
     }
 

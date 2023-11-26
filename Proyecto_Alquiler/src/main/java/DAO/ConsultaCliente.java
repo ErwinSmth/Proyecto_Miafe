@@ -407,6 +407,41 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
         return false;
     }
 
+    public Cliente getDatosCli(String correo) {
+
+        Cliente cli = null;
+        ResultSet rs = null;
+
+        String query = "SELECT p.pri_nombre, p.seg_nombre, p.ape_paterno, p.ape_materno, c.telefono, p.num_doc\n"
+                + "FROM \n"
+                + "    Persona p\n"
+                + "INNER JOIN Cliente c ON p.id_persona = c.id_persona\n"
+                + "WHERE c.correo = ?";
+
+        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
+            ps.setString(1, correo);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                cli = new Cliente();
+                cli.setPri_nombre(rs.getString("pri_nombre"));
+                cli.setSeg_nombre(rs.getString("seg_nombre"));
+                cli.setApe_paterno(rs.getString("ape_paterno"));
+                cli.setApe_materno(rs.getString("ape_materno"));
+                cli.setTelefono(rs.getString("telefono"));
+                cli.setNum_doc(rs.getString("num_doc"));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cli;
+    }
+
     //------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo para verificiar si un num de documento ya existe en la bd-----------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------

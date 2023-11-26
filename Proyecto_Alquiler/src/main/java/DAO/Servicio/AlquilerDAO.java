@@ -49,26 +49,23 @@ public class AlquilerDAO {
     }
 
     //Metodo para buscar un ID de un Cliente a partir de su correo
-    //Retornada 0 en caso no encuentre al cliente 
+    //Retornara 0 en caso no encuentre el id
     public int getIDCliente(String correo) {
-
-        String query = "Select id_cliente from Cliente where correo = ?";
-        ResultSet rs = null;
+        int idCliente = 0;
+        String query = "SELECT id_cliente FROM Cliente WHERE correo = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
-
             ps.setString(1, correo);
-            rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                return rs.getInt("id_cliente");
+                idCliente = rs.getInt("id_cliente");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return 0;
+        return idCliente;
     }
 
     //Metodo que se usara para registrar un Alquiler(Se hara uso de la tabla Alquiler), los objetos se añadiran
@@ -168,6 +165,25 @@ public class AlquilerDAO {
         }
 
         return 2;
+    }
+
+    //Este metodo se usara en caso se desee editar la cantidad de objeto que ya se asocio a un alquiler
+    public int updateCant(int idAlquiler, String nombrePro, int nuevaCant) {
+
+        String query = "Update Alquiler_Inventario SET cantidad_alquilada = ? WHERE id_alquiler = ? AND nombre = ?";
+
+        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
+            ps.setInt(1, idAlquiler);
+            ps.setString(2, nombrePro);
+            ps.setInt(1, nuevaCant);
+
+            return ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     //Recupera todos los objetos o Items asociados a un alquiler 
@@ -274,22 +290,30 @@ public class AlquilerDAO {
     }
 
     //Metodo que actualizara el inventario cada vez que agreguemos un producto a un alquiler
-    public int actualizarInventario(String nombrePro, int cantAlquilada) {
+    //El parametro agregar si es true pues la consulta lo interpretera que se desea agregar 
+    //un producto a un alquiler y por lo tanto se resta la cantidad disponible de un objeto en el inventario
+    //asi como tambien se suma la cantidad prestada de dicho objeto, y en caso sea false
+    //detectara que quiere quitar objetos de ese inventario y por lo tanto hara lo contrario
+    public int actualizarInventario(String nombrePro, int cantAlquilada, boolean agregar) {
 
         String query = "UPDATE inventario AS i \"\n"
                 + "\"INNER JOIN Alquiler_Inventario AS ai ON i.nombre = ai.nombre \"\n"
-                + "\"SET i.cant_disponible = i.cant_disponible - ?, \"\n"
-                + "\"i.cant_prestada = i.cant_prestada + ? \"\n"
+                + "\"SET i.cant_disponible = CASE WHEN ? THEN i.cant_disponible - ? ELSE i.cant_disponible + ? END, \"\n"
+                + "\"    i.cant_prestada = CASE WHEN ? THEN i.cant_prestada + ? ELSE i.cant_prestada - ? END \"\n"
                 + "\"WHERE ai.nombre = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
-            ps.setInt(1, cantAlquilada);
+            ps.setBoolean(1, agregar);
             ps.setInt(2, cantAlquilada);
-            ps.setString(3, nombrePro);
-            
+            ps.setInt(3, cantAlquilada);
+            ps.setBoolean(4, agregar);
+            ps.setInt(5, cantAlquilada);
+            ps.setInt(6, cantAlquilada);
+            ps.setString(7, nombrePro);
+
             return ps.executeUpdate(); //Retornara el numero de filas modificadas
-            
+
         } catch (Exception e) {
         }
 

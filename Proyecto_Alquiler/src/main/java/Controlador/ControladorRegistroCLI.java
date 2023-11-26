@@ -4,11 +4,13 @@
  */
 package Controlador;
 
+import Controlador.Servicio.Control_RegistroAlquiler;
 import DAO.ConsultaCliente;
 
 import Modelo.Tipo_Documentos;
 import Modelo.Cliente;
 import Modelo.Estado_Persona;
+import Vista.RegistrarAlquiler;
 import Vista.RegistroClientes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,10 +26,12 @@ public class ControladorRegistroCLI implements ActionListener {
 
     private RegistroClientes reCLI;
     private ConsultaCliente conCLI;
+    private RegistrarAlquiler regAlqui;
 
-    public ControladorRegistroCLI(RegistroClientes reCLI, ConsultaCliente conCLI) {
+    public ControladorRegistroCLI(RegistroClientes reCLI, ConsultaCliente conCLI, RegistrarAlquiler regAlqui) {
         this.reCLI = reCLI;
         this.conCLI = conCLI;
+        this.regAlqui = regAlqui;
         this.reCLI.btn_registrarCLI.addActionListener(this);
         this.reCLI.btn_limpiar.addActionListener(this);
 
@@ -70,8 +74,19 @@ public class ControladorRegistroCLI implements ActionListener {
                 if (conCLI.nDocRepe(numDoc)) {
                     JOptionPane.showMessageDialog(null, "Este numero de Documento ya esta registrado");
                 } else if (conCLI.Registrar(cli)) {
-                    JOptionPane.showMessageDialog(null, "Cliente Registrado correctamente");
-                    limpiar();
+
+                    Cliente newCliente = conCLI.getDatosCli(correo);
+
+                    if (newCliente != null) {
+                        
+                        newCliente.setCorreo(correo);
+                        JOptionPane.showMessageDialog(null, "Cliente Registrado correctamente");
+                        reCLI.dispose();
+                        
+                        Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(regAlqui, newCliente);
+                        conRegAlqui.mostrarVista();
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en el registro del usuario");
                     limpiar();
