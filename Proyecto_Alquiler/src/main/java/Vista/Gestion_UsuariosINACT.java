@@ -36,6 +36,7 @@ public class Gestion_UsuariosINACT extends javax.swing.JInternalFrame {
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(995, 645));
 
+        tabla_usINAC.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         tabla_usINAC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -46,8 +47,10 @@ public class Gestion_UsuariosINACT extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla_usINAC);
 
+        btn_reactivar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_reactivar.setText("Reactivar");
 
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_actualizar.setText("Actualizar");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -65,7 +68,7 @@ public class Gestion_UsuariosINACT extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(202, 202, 202)
                 .addComponent(btn_actualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 344, Short.MAX_VALUE)
                 .addComponent(btn_reactivar)
                 .addGap(218, 218, 218))
             .addGroup(layout.createSequentialGroup()
@@ -86,7 +89,7 @@ public class Gestion_UsuariosINACT extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_reactivar)
                     .addComponent(btn_actualizar))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();

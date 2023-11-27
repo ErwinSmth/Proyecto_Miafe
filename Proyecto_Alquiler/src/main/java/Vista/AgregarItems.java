@@ -47,8 +47,10 @@ public class AgregarItems extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Productos Registrados");
 
+        table_prod.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         table_prod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -59,10 +61,15 @@ public class AgregarItems extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(table_prod);
 
+        txt_filtrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        btn_añadir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_añadir.setText("Añadir al Alquiler");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Productos Seleccionados");
 
+        table_selected.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         table_selected.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -73,23 +80,32 @@ public class AgregarItems extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(table_selected);
 
+        btn_eliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_eliminar.setText("Eliminar del Alquiler");
 
+        btn_Editar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_Editar.setText("Editar Cantidad");
 
+        btn_buscar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_buscar.setText("Buscar");
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setText("Asignar fecha de Devolucion");
 
+        jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTextField1.setText("jTextField1");
 
+        btn_contrato.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_contrato.setText("Realizar Contrato");
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("ID");
         jLabel5.setToolTipText("");
 
         txt_id.setEditable(false);
+        txt_id.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
+        lbl_correo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_correo.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,7 +116,7 @@ public class AgregarItems extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(177, 177, 177)
                 .addComponent(jLabel1)
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(493, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel5)
@@ -135,7 +151,7 @@ public class AgregarItems extends javax.swing.JInternalFrame {
                         .addComponent(btn_eliminar)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextField1)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +190,7 @@ public class AgregarItems extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addComponent(btn_añadir)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();

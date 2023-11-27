@@ -37,18 +37,25 @@ public class RegistrarAlquiler extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        lbl_informacion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_informacion.setText("jLabel1");
 
+        lbl_correo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lbl_correo.setText("jLabel1");
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Fecha de Contrato");
 
         txt_contrato.setEditable(false);
+        txt_contrato.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Registro de un Alquiler");
 
+        btn_continuar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_continuar.setText("Continuar");
 
+        btn_cancelar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -70,7 +77,7 @@ public class RegistrarAlquiler extends javax.swing.JInternalFrame {
                         .addComponent(lbl_correo))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                         .addComponent(txt_contrato, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +101,7 @@ public class RegistrarAlquiler extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txt_contrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_continuar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

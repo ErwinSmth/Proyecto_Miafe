@@ -34,7 +34,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
               <Component id="btn_actualizar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="273" max="32767" attributes="0"/>
+              <EmptySpace pref="344" max="32767" attributes="0"/>
               <Component id="btn_reactivar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
           </Group>
@@ -59,7 +59,7 @@
                   <Component id="btn_reactivar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_actualizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace pref="96" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,6 +74,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tabla_usINAC">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="0" rowCount="0"/>
             </Property>
@@ -88,6 +91,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_reactivar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Reactivar"/>
       </Properties>
       <AuxValues>
@@ -96,6 +102,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_actualizar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
       <AuxValues>

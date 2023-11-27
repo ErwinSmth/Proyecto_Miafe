@@ -45,12 +45,16 @@ public class Gestion_Categorias extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        btn_obtener.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_obtener.setText("Obtener");
 
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_actualizar.setText("Actualizar");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Gestion de Categorias");
 
+        tabla_categoria.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         tabla_categoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -61,6 +65,7 @@ public class Gestion_Categorias extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla_categoria);
 
+        btn_limpiar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_limpiar.setText("Limpiar");
 
         javax.swing.GroupLayout adminPaneLayout = new javax.swing.GroupLayout(adminPane);
@@ -82,7 +87,7 @@ public class Gestion_Categorias extends javax.swing.JInternalFrame {
                     .addGroup(adminPaneLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         adminPaneLayout.setVerticalGroup(
             adminPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,18 +106,26 @@ public class Gestion_Categorias extends javax.swing.JInternalFrame {
 
         getContentPane().add(adminPane, java.awt.BorderLayout.CENTER);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Nombre");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Descripcion");
 
+        txt_nomCat.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
         txa_desCat.setColumns(20);
+        txa_desCat.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txa_desCat.setRows(5);
         jScrollPane2.setViewportView(txa_desCat);
 
+        btn_agregar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_agregar.setText("Agregar");
 
+        btn_editar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_editar.setText("Editar");
 
+        btn_eliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_eliminar.setText("Eliminar");
 
         javax.swing.GroupLayout cajaPaneLayout = new javax.swing.GroupLayout(cajaPane);
@@ -128,12 +141,13 @@ public class Gestion_Categorias extends javax.swing.JInternalFrame {
                 .addGroup(cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_nomCat, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addGroup(cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_eliminar))
+                    .addComponent(btn_editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
         cajaPaneLayout.setVerticalGroup(
             cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,17 +157,14 @@ public class Gestion_Categorias extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txt_nomCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_agregar))
+                .addGap(42, 42, 42)
                 .addGroup(cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(cajaPaneLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(cajaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(cajaPaneLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addComponent(btn_editar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_eliminar)))
+                        .addComponent(btn_eliminar))
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

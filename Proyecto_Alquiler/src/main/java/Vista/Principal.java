@@ -48,8 +48,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblnombre = new javax.swing.JLabel();
         lblapellido = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         lblrol = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         mnbar_barra = new javax.swing.JMenuBar();
         mnu_Us = new javax.swing.JMenu();
         mni_Us = new javax.swing.JMenuItem();
@@ -66,10 +66,19 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btn_cerrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_cerrar.setText("Cerrar Sesion");
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Bienvenido Usuario:");
 
+        lblnombre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        lblapellido.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        lblrol.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("con el Rol:");
 
         javax.swing.GroupLayout inforPaneLayout = new javax.swing.GroupLayout(inforPane);
@@ -78,27 +87,27 @@ public class Principal extends javax.swing.JFrame {
             inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inforPaneLayout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(lblnombre)
-                .addGap(18, 18, 18)
-                .addComponent(lblapellido)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(lblrol)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         inforPaneLayout.setVerticalGroup(
             inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inforPaneLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblnombre)
+                .addGroup(inforPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(lblrol)
-                    .addComponent(lblapellido))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         Escritorio.setLayer(btn_cerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -111,7 +120,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(inforPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(btn_cerrar)
                 .addContainerGap())
         );
@@ -123,21 +132,26 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(EscritorioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(inforPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         mnu_Us.setText("Usuarios");
+        mnu_Us.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        mni_Us.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_Us.setText("Gestionar Usuarios");
         mnu_Us.add(mni_Us);
 
+        mni_USINAC.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_USINAC.setText("Usuarios Inactivos");
         mnu_Us.add(mni_USINAC);
 
         mnbar_barra.add(mnu_Us);
 
         mnu_Alquiler.setText("Alquiler");
+        mnu_Alquiler.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        mni_regCLIENTE.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_regCLIENTE.setText("Registro Cliente");
         mni_regCLIENTE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +163,9 @@ public class Principal extends javax.swing.JFrame {
         mnbar_barra.add(mnu_Alquiler);
 
         mnu_Clientes.setText("Clientes");
+        mnu_Clientes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        mni_Clientes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_Clientes.setText("Gestion de Clientes");
         mni_Clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,17 +177,22 @@ public class Principal extends javax.swing.JFrame {
         mnbar_barra.add(mnu_Clientes);
 
         mnu_categorias.setText("Categoria");
+        mnu_categorias.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        mni_categoria.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_categoria.setText("Gestion de Categorias");
         mnu_categorias.add(mni_categoria);
 
         mnbar_barra.add(mnu_categorias);
 
         mnu_inventario.setText("Inventario");
+        mnu_inventario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        mni_productos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_productos.setText("Productos");
         mnu_inventario.add(mni_productos);
 
+        mni_gesPro.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mni_gesPro.setText("Gestion de Productos");
         mnu_inventario.add(mni_gesPro);
 

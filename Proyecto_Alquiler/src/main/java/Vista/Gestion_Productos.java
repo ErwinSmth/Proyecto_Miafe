@@ -36,6 +36,7 @@ public class Gestion_Productos extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        table_produc.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         table_produc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -46,14 +47,19 @@ public class Gestion_Productos extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(table_produc);
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Productos");
 
+        btn_eliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_eliminar.setText("Eliminar");
 
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_actualizar.setText("Actualizar");
 
+        btn_precio.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_precio.setText("Editar Precio");
 
+        btn_disponible.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_disponible.setText("Agregar mas disponibles");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,7 +94,7 @@ public class Gestion_Productos extends javax.swing.JInternalFrame {
                     .addComponent(btn_actualizar)
                     .addComponent(btn_precio)
                     .addComponent(btn_disponible))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();

@@ -42,29 +42,42 @@ public class Agregar_Productos extends javax.swing.JInternalFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Nombre");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 24, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Cantidad a Agregar");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
+        txt_nomb.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_nomb.setToolTipText("");
-        jPanel2.add(txt_nomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 28, 195, -1));
-        jPanel2.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 150, -1));
+        jPanel2.add(txt_nomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 195, -1));
 
+        txt_cant.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel2.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 150, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Precio");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
-        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 180, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
+        txt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 180, -1));
+
+        btn_agregar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_agregar.setText("Agregar");
-        jPanel2.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+        jPanel2.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Categorias");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        jPanel2.add(cbo_CATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
+        cbo_CATE.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jPanel2.add(cbo_CATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
+
+        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_actualizar.setText("Actualizar");
-        jPanel2.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, -1));
+        jPanel2.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,14 +85,14 @@ public class Agregar_Productos extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();
