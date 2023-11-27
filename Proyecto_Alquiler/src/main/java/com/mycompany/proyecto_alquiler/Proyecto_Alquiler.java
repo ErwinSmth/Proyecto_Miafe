@@ -12,6 +12,7 @@ import Controlador.ControladorGestionCLI;
 import Controlador.Inventariado.ControlCategoria;
 import Controlador.Inventariado.Control_AgregarPro;//este
 import Controlador.Inventariado.Control_Producto;
+import Controlador.Servicio.Control_AgregarItem;
 import Controlador.Servicio.Control_RegistroAlquiler;
 
 import DAO.ConsultaUsuario;
@@ -20,6 +21,7 @@ import DAO.Inventariado.ConsultaCategoria;
 import DAO.Inventariado.ConsultaProducto;//este
 import DAO.Servicio.AlquilerDAO;
 import Modelo.Usuario;
+import Vista.AgregarItems;
 
 
 import Vista.Gestion_Categorias;
@@ -44,6 +46,7 @@ public class Proyecto_Alquiler {
         ConsultaCategoria conCat = new ConsultaCategoria();
         ConsultaProducto conPRO = new ConsultaProducto();
         AlquilerDAO alquiDAO = new AlquilerDAO();
+        AgregarItems addItem = new AgregarItems();
         
         Login log = new Login();
         Principal pri = Principal.getInstancia();
@@ -59,13 +62,14 @@ public class Proyecto_Alquiler {
         Gestion_Productos Proges = new Gestion_Productos();
         RegistrarAlquiler regAlqui = new RegistrarAlquiler();
 
+        Control_AgregarItem conItem = new Control_AgregarItem(alquiDAO, addItem);
         ControladorGestionUS controGus = new ControladorGestionUS(gesUs, conUsus);
-        Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(alquiDAO, regAlqui);
+        Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(alquiDAO, regAlqui, addItem);
         ControladorRegistroCLI conREGCLI = new ControladorRegistroCLI(regisCLI, conCL, regAlqui);
         ControladorGestionCLI conGESTCLI = new ControladorGestionCLI(gesCLI, conCL);
         Control_Producto conPro = new Control_Producto(conPRO, Proges);
 
-        ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI, gesCat, gesPRO, Proges, regAlqui);
+        ControladorPrincipal conPri = new ControladorPrincipal(pri, gesUs, gesUSINAC, log, regisCLI, gesCLI, gesCat, gesPRO, Proges, regAlqui, addItem);
 
         ControladorGestionUSINACTIVOS conUSINAC = new ControladorGestionUSINACTIVOS(gesUSINAC, conUsus);
         ControlCategoria controCat = new ControlCategoria(gesCat, conCat);

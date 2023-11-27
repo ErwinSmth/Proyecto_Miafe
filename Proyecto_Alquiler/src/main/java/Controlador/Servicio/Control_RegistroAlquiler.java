@@ -7,6 +7,7 @@ package Controlador.Servicio;
 import DAO.Servicio.AlquilerDAO;
 import Modelo.Cliente;
 import Modelo.Servicio.ContratoAlquiler;
+import Vista.AgregarItems;
 import Vista.RegistrarAlquiler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,12 +24,14 @@ public class Control_RegistroAlquiler implements ActionListener {
     private AlquilerDAO alquiDAO;
     private RegistrarAlquiler regAlqui;
     private Cliente cliente;
+    private AgregarItems addItem;
 
-    public Control_RegistroAlquiler(AlquilerDAO alquiDAO, RegistrarAlquiler regAlqui) {
+    public Control_RegistroAlquiler(AlquilerDAO alquiDAO, RegistrarAlquiler regAlqui, AgregarItems addItem) {
         this.alquiDAO = alquiDAO;
         this.regAlqui = regAlqui;
+        this.addItem = addItem;
         fechaActual();
-        
+
         regAlqui.btn_continuar.addActionListener(this);
     }
 
@@ -39,31 +42,38 @@ public class Control_RegistroAlquiler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         if (e.getSource() == regAlqui.btn_continuar) {
-            
+
             ContratoAlquiler obj = new ContratoAlquiler();
             Cliente cli = new Cliente();
-            
+
             int idcliente;
             idcliente = alquiDAO.getIDCliente(regAlqui.lbl_correo.getText());
-            
+
             cli.setId_cliente(String.valueOf(idcliente));
             obj.setCliente(cli);
             obj.setFecha_Contrato(LocalDate.now());
-            
-            System.out.println(idcliente);
-            
+
             if (alquiDAO.addAlquiler(obj) == 1) {
                 //Se agrego Exitosamente
                 JOptionPane.showMessageDialog(null, "Alquiler Agregado Exitosamente");
+
+                String correo = regAlqui.lbl_correo.getText();
+                String idalquiler = String.valueOf(alquiDAO.getIDAlquiler());
+
+                regAlqui.dispose();
+
+                Control_AgregarItem conAddItem = new Control_AgregarItem(addItem, correo, idalquiler);
+                conAddItem.mostrarVista();
+
             } else {
                 //Ocurrio un Error
                 JOptionPane.showMessageDialog(null, "Ocurrio un Error");
             }
-            
+
         }
-        
+
     }
 
     public void fechaActual() {

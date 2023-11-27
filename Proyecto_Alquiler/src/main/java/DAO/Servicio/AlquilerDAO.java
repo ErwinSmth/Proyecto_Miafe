@@ -29,7 +29,7 @@ public class AlquilerDAO {
     //(Solo mostrara el nombre y disponible de un producto)
     public List<Producto> getProducto() {
 
-        String query = "SELECT nombre, cant_disponible FROM inventario";
+        String query = "SELECT nombre, cant_disponible, precio FROM inventario";
         List<Producto> productos = new ArrayList<>();
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query); ResultSet rs = ps.executeQuery()) {
@@ -38,6 +38,7 @@ public class AlquilerDAO {
                 Producto producto = new Producto();
                 producto.setNom_pro(rs.getString("nombre"));
                 producto.setCantDisponible(rs.getInt("cant_disponible"));
+                producto.setPrecio_uni(rs.getFloat("precio"));
                 productos.add(producto);
             }
         } catch (SQLException e) {
@@ -46,6 +47,31 @@ public class AlquilerDAO {
         }
         return productos;
 
+    }
+
+    //Metodo para filtrar por nombres en la tabla donde se mostraran todos los productos
+    public List<Producto> filtrarProducto(String nombre) {
+
+        List<Producto> productos = new ArrayList<>();
+        String query = "SELECT * FROM Inventario WHERE nombre LIKE ?";
+
+        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
+            ps.setString(1, "%" + nombre + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto producto = new Producto();
+                producto.setNom_pro(rs.getString("nombre"));
+                producto.setCantDisponible(rs.getInt("cant_disponible"));
+                productos.add(producto);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return productos;
     }
 
     //Metodo para buscar un ID de un Cliente a partir de su correo
@@ -66,6 +92,26 @@ public class AlquilerDAO {
         }
 
         return idCliente;
+    }
+
+    public int getIDAlquiler() {
+
+        int idAquiler = 0;
+        String query = "Select MAX(id_alquiler) AS ultimo_id FROM Alquiler";
+
+        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idAquiler = rs.getInt("ultimo_id");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return idAquiler;
     }
 
     //Metodo que se usara para registrar un Alquiler(Se hara uso de la tabla Alquiler), los objetos se añadiran
@@ -142,7 +188,7 @@ public class AlquilerDAO {
     //Este metodo se usara para agregar Items o productos a un alquiler
     //para esto se hara uso de la tabla alquiler_inventario, se añadiran objetos a un alquiler
     //cada vez que el empleado o administrador haga click en la tabla
-    public int addItem(Item i, int idAlquiler) {
+    public int addItem(Item i, int idAlquiler, float costo) {
 
         String query = "insert into Alquiler_Inventario(id_alquiler, nombre, cantidad_alquilada, precio_alquiler)\n"
                 + "values(?, ?, ?, ?)";
@@ -152,7 +198,11 @@ public class AlquilerDAO {
             ps.setInt(1, idAlquiler);
             ps.setString(2, i.getProducto().getNom_pro());
             ps.setInt(3, i.getCantidad());
-            ps.setFloat(4, i.calcularTotal());
+                        
+            //Calculamos el precio total a partir de la cantidad seleccionada de un producto
+            //y su precio unitario
+            float precioTotal = i.getCantidad() * costo;
+            ps.setFloat(4, precioTotal);
 
             int fila = ps.executeUpdate();
 
@@ -188,13 +238,13 @@ public class AlquilerDAO {
 
     //Recupera todos los objetos o Items asociados a un alquiler 
     //Usando la tabla Alquiler_Inventario
-    public List<Item> getItems(int idAlquiler) {
+    public List<Item> getItems(String idAlquiler) {
         List<Item> itemsAlquiler = new ArrayList<>();
 
         String query = "Select nombre, cantidad_alquilada, precio_alquiler FROM Alquiler_Inventario WHERE id_alquiler = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
-            ps.setInt(1, idAlquiler);
+            ps.setString(1, idAlquiler);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -261,25 +311,24 @@ public class AlquilerDAO {
 
     //Metodo para obtener toda la informacion de un producto a partir de su nombre
     private Producto getProducNombre(String nombre) {
-        String query = "SELECT id, nom_pro, categoria, precio_uni, cantDisponible, cantPrestada, cantMantenimiento "
-                + "FROM Producto "
-                + "WHERE nom_pro = ?";
+        String query = "SELECT  nombre, nombre_cat, precio, cant_disponible, cant_prestada, cant_mantenimiento "
+                + "FROM Inventario "
+                + "WHERE nombre = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                int id = rs.getInt("id");
-                String nom_pro = rs.getString("nom_pro");
-                String categoria = rs.getString("categoria");
-                float precio_uni = rs.getFloat("precio_uni");
-                int disponible = rs.getInt("cantDisponible");
-                int prestada = rs.getInt("cantPrestada");
-                int mantenimiento = rs.getInt("cantMantenimiento");
+                String nom_pro = rs.getString("nombre");
+                String categoria = rs.getString("nombre_cat");
+                float precio_uni = rs.getFloat("precio");
+                int disponible = rs.getInt("cant_disponible");
+                int prestada = rs.getInt("cant_prestada");
+                int mantenimiento = rs.getInt("cant_mantenimiento");
 
                 // Crear y devolver un nuevo objeto Producto con los datos recuperados
-                return new Producto(id, nom_pro, new Categoria_Mobiliario(categoria), precio_uni, disponible,
+                return new Producto(nom_pro, new Categoria_Mobiliario(categoria), precio_uni, disponible,
                         prestada, mantenimiento);
             }
         } catch (SQLException e) {
@@ -296,11 +345,11 @@ public class AlquilerDAO {
     //detectara que quiere quitar objetos de ese inventario y por lo tanto hara lo contrario
     public int actualizarInventario(String nombrePro, int cantAlquilada, boolean agregar) {
 
-        String query = "UPDATE inventario AS i \"\n"
-                + "\"INNER JOIN Alquiler_Inventario AS ai ON i.nombre = ai.nombre \"\n"
-                + "\"SET i.cant_disponible = CASE WHEN ? THEN i.cant_disponible - ? ELSE i.cant_disponible + ? END, \"\n"
-                + "\"    i.cant_prestada = CASE WHEN ? THEN i.cant_prestada + ? ELSE i.cant_prestada - ? END \"\n"
-                + "\"WHERE ai.nombre = ?";
+        String query = "UPDATE inventario AS i "
+                + "INNER JOIN Alquiler_Inventario AS ai ON i.nombre = ai.nombre "
+                + "SET i.cant_disponible = CASE WHEN ? THEN i.cant_disponible - ? ELSE i.cant_disponible + ? END, "
+                + "i.cant_prestada = CASE WHEN ? THEN i.cant_prestada + ? ELSE i.cant_prestada - ? END "
+                + "WHERE ai.nombre = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 

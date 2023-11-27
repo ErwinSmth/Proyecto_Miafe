@@ -12,6 +12,7 @@ import DAO.Inventariado.ConsultaProducto;
 
 import Modelo.Roles_Usuarios;
 import Modelo.Usuario;
+import Vista.AgregarItems;
 
 import Vista.Gestion_Categorias;
 import Vista.Agregar_Productos;
@@ -40,9 +41,12 @@ public class ControladorPrincipal implements ActionListener {
     private Agregar_Productos gesPRO;
     private Gestion_Productos Proges;
     private RegistrarAlquiler regAlqui;
+    private AgregarItems addItem;
 
     public ControladorPrincipal(Principal pri, Gestion_Usuarios gesUs, Gestion_UsuariosINACT gesUSINAC, Login log, 
-            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Agregar_Productos gesPRO, Gestion_Productos Proges, RegistrarAlquiler regAlqui) {
+            RegistroClientes regisCLI, Gestion_Clientes gestCLI, Gestion_Categorias gesCat,Agregar_Productos gesPRO, 
+            Gestion_Productos Proges, RegistrarAlquiler regAlqui, AgregarItems addItem) {
+        
 
         this.pri = Principal.getInstancia();
         this.gesUs = gesUs;
@@ -54,6 +58,7 @@ public class ControladorPrincipal implements ActionListener {
         this.gesPRO=gesPRO;
         this.Proges = Proges;
         this.regAlqui = regAlqui;
+        this.addItem = addItem;
 
         this.pri.mni_Clientes.addActionListener(this);
         this.pri.mni_regCLIENTE.addActionListener(this);
@@ -65,6 +70,7 @@ public class ControladorPrincipal implements ActionListener {
         this.pri.mni_gesPro.addActionListener(this);
         
         pri.Escritorio.add(regAlqui);
+        pri.Escritorio.add(addItem);
 
     }
 
