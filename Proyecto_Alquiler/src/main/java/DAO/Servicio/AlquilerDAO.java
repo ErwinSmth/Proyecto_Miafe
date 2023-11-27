@@ -79,7 +79,7 @@ public class AlquilerDAO {
     //Retornara 0 en caso no encuentre el id
     public int getIDCliente(String correo) {
         int idCliente = 0;
-        String query = "SELECT id_cliente FROM Cliente WHERE correo = ?";
+        String query = "SELECT * FROM Cliente WHERE correo = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setString(1, correo);
@@ -94,7 +94,7 @@ public class AlquilerDAO {
 
         return idCliente;
     }
-
+   
     public int getIDAlquiler() {
 
         int idAquiler = 0;

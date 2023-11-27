@@ -65,34 +65,66 @@ public class Control_AgregarItem implements ActionListener {
 
             if (fila != -1) {
 
-                int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrse la cantidad a alquilar"));
+                int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad a alquilar"));
 
                 if (cantidad > 0) {
 
-                    String nombre = (String) addItem.table_prod.getValueAt(fila, 0);
-
-                    String costoString = (String) addItem.table_prod.getValueAt(fila, 2);
-                    float costo = Float.parseFloat(costoString);
-
-                    pro.setNom_pro(nombre);
-
-                    item.setProducto(pro);
-                    item.setCantidad(cantidad);
-
-                    //Significa que se agrego correctamente
-                    if (alquiDAO.addItem(item, idAlquiler, costo) == 1) {
-
-                        if (alquiDAO.actualizarInventario(nombre, cantidad, true) > 0) {
-                            mostrarProductos();
-                            seleccionados();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Ocurrio un Error en la actualizacion del inventario");
+                    Object valorDipo = addItem.table_prod.getValueAt(fila, 1);
+                    int disponible = 0;
+                    
+                    if (valorDipo instanceof String) {
+                        try {
+                            disponible = Integer.parseInt((String)valorDipo);
+                        } catch (NumberFormatException ex) {
+                            ex.printStackTrace();
                         }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Ocurrio un Error al momento de agregar un producto al alquiler");
+                    } else if (valorDipo instanceof Integer) {
+                        disponible = (Integer) valorDipo;
                     }
 
+                    if (cantidad > disponible) {
+
+                        JOptionPane.showMessageDialog(null, "Debe Seleccionar una Cantidad Correcta");
+                        return;
+                        
+                    } else {
+                        String nombre = (String) addItem.table_prod.getValueAt(fila, 0);
+
+                        Object valor = addItem.table_prod.getValueAt(fila, 2);
+                        float costo = 0.0f;
+
+                        if (valor instanceof String) {
+                            try {
+                                costo = Float.parseFloat((String) valor);
+                            } catch (NumberFormatException ex) {
+                                ex.printStackTrace();
+                            }
+                        } else if (valor instanceof Float) {
+                            costo = (Float) valor;
+                        }
+
+                        pro.setNom_pro(nombre);
+
+                        item.setProducto(pro);
+                        item.setCantidad(cantidad);
+
+                        //Significa que se agrego correctamente
+                        if (alquiDAO.addItem(item, idAlquiler, costo) == 1) {
+
+                            if (alquiDAO.actualizarInventario(nombre, cantidad, true) > 0) {
+                                mostrarProductos();
+                                seleccionados();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Ocurrio un Error en la actualizacion del inventario");
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ocurrio un Error al momento de agregar un producto al alquiler");
+                        }
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccionar una cantidad mayor a 0");
                 }
 
             }
@@ -175,7 +207,7 @@ public class Control_AgregarItem implements ActionListener {
         modelo.setRowCount(0); // Limpiar la tabla
 
         for (Producto pro : productos) {
-            Object[] datos = {pro.getNom_pro(), pro.getCantDisponible()};
+            Object[] datos = {pro.getNom_pro(), pro.getCantDisponible(), pro.getPrecio_uni()};
             modelo.addRow(datos);
         }
 

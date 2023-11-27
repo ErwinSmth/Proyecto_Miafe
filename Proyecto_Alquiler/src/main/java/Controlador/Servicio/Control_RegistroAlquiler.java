@@ -33,6 +33,7 @@ public class Control_RegistroAlquiler implements ActionListener {
         fechaActual();
 
         regAlqui.btn_continuar.addActionListener(this);
+        regAlqui.btn_cancelar.addActionListener(this);
     }
 
     public Control_RegistroAlquiler(RegistrarAlquiler regAlqui, Cliente cliente) {
@@ -72,6 +73,10 @@ public class Control_RegistroAlquiler implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Ocurrio un Error");
             }
 
+        } else if (e.getSource() == regAlqui.btn_cancelar) {
+            
+            regAlqui.dispose();
+            
         }
 
     }
