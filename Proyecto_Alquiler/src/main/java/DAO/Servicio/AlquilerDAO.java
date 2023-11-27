@@ -64,6 +64,7 @@ public class AlquilerDAO {
                 Producto producto = new Producto();
                 producto.setNom_pro(rs.getString("nombre"));
                 producto.setCantDisponible(rs.getInt("cant_disponible"));
+                producto.setPrecio_uni(rs.getFloat("precio"));
                 productos.add(producto);
             }
 
