@@ -6,6 +6,7 @@ package Controlador.Servicio;
 
 import DAO.Servicio.AlquilerDAO;
 import Modelo.Inventariado.Producto;
+import Modelo.Servicio.ContratoAlquiler;
 import Modelo.Servicio.Item;
 import Vista.AgregarItems;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,10 @@ public class Control_AgregarItem implements ActionListener {
         seleccionados();
         addItem.btn_buscar.addActionListener(this);
         addItem.btn_añadir.addActionListener(this);
+        addItem.btn_cancelar.addActionListener(this);
+        addItem.btn_actualizar.addActionListener(this);
+        addItem.btn_eliminar.addActionListener(this);
+        addItem.btn_Editar.addActionListener(this);
     }
 
     public Control_AgregarItem(AgregarItems addItem, String correo, String idAlquiler) {
@@ -71,10 +76,10 @@ public class Control_AgregarItem implements ActionListener {
 
                     Object valorDipo = addItem.table_prod.getValueAt(fila, 1);
                     int disponible = 0;
-                    
+
                     if (valorDipo instanceof String) {
                         try {
-                            disponible = Integer.parseInt((String)valorDipo);
+                            disponible = Integer.parseInt((String) valorDipo);
                         } catch (NumberFormatException ex) {
                             ex.printStackTrace();
                         }
@@ -86,7 +91,7 @@ public class Control_AgregarItem implements ActionListener {
 
                         JOptionPane.showMessageDialog(null, "Debe Seleccionar una Cantidad Correcta");
                         return;
-                        
+
                     } else {
                         String nombre = (String) addItem.table_prod.getValueAt(fila, 0);
 
@@ -111,7 +116,8 @@ public class Control_AgregarItem implements ActionListener {
                         //Significa que se agrego correctamente
                         if (alquiDAO.addItem(item, idAlquiler, costo) == 1) {
 
-                            if (alquiDAO.actualizarInventario(nombre, cantidad, true) > 0) {
+                            if (alquiDAO.actualizarInventarioADD(nombre, cantidad) > 0) {
+                                addItem.txt_filtrar.setText("");
                                 mostrarProductos();
                                 seleccionados();
                             } else {
@@ -128,6 +134,49 @@ public class Control_AgregarItem implements ActionListener {
                 }
 
             }
+
+        } else if (e.getSource() == addItem.btn_cancelar) {
+
+            ContratoAlquiler obj = new ContratoAlquiler();
+            obj.setId_alquiler(addItem.txt_id.getText());
+
+            if (alquiDAO.eliminarAlquiler(obj) == 1) {
+
+                JOptionPane.showMessageDialog(null, "Eliminado Correctamente");
+                mostrarProductos();
+                seleccionados();
+
+            }
+
+        } else if (e.getSource() == addItem.btn_actualizar) {
+
+            mostrarProductos();
+
+        } else if (e.getSource() == addItem.btn_eliminar) {
+
+            int fila = (int) addItem.table_selected.getSelectedRow();
+
+            if (fila != -1) {
+
+                String nombrePro = (String) addItem.table_selected.getValueAt(fila, 0);
+                String cantiadadString = (String) addItem.table_selected.getValueAt(fila, 1);
+                int cantidad = Integer.parseInt(cantiadadString);
+                int idalquiler = Integer.parseInt(addItem.txt_id.getText());
+
+                if (alquiDAO.eliminarPro(nombrePro, idalquiler) > 0) {
+
+                    if (alquiDAO.actualizarInventarioELI(nombrePro, cantidad) > 0) {
+
+                        mostrarProductos();
+                        seleccionados();
+
+                    }
+
+                }
+
+            }
+
+        } else if (e.getSource() == addItem.btn_Editar) {
 
         }
 
