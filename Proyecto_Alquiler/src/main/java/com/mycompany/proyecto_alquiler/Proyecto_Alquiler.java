@@ -64,8 +64,8 @@ public class Proyecto_Alquiler {
 
         Control_AgregarItem conItem = new Control_AgregarItem(alquiDAO, addItem);
         ControladorGestionUS controGus = new ControladorGestionUS(gesUs, conUsus);
-        Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(alquiDAO, regAlqui, addItem);
-        ControladorRegistroCLI conREGCLI = new ControladorRegistroCLI(regisCLI, conCL, regAlqui);
+        Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(alquiDAO, regAlqui, addItem, regisCLI,conCL, pri);
+        ControladorRegistroCLI conREGCLI = new ControladorRegistroCLI(regisCLI, conCL, regAlqui, pri);
         ControladorGestionCLI conGESTCLI = new ControladorGestionCLI(gesCLI, conCL);
         Control_Producto conPro = new Control_Producto(conPRO, Proges);
 

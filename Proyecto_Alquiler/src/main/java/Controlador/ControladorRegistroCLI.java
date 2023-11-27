@@ -10,6 +10,7 @@ import DAO.ConsultaCliente;
 import Modelo.Tipo_Documentos;
 import Modelo.Cliente;
 import Modelo.Estado_Persona;
+import Vista.Principal;
 import Vista.RegistrarAlquiler;
 import Vista.RegistroClientes;
 import java.awt.event.ActionEvent;
@@ -25,14 +26,26 @@ public class ControladorRegistroCLI implements ActionListener {
     private RegistroClientes reCLI;
     private ConsultaCliente conCLI;
     private RegistrarAlquiler regAlqui;
+    private Cliente cliente;
+    private Principal pri;
 
-    public ControladorRegistroCLI(RegistroClientes reCLI, ConsultaCliente conCLI, RegistrarAlquiler regAlqui) {
+    public ControladorRegistroCLI(RegistroClientes reCLI, ConsultaCliente conCLI, RegistrarAlquiler regAlqui, Principal pri) {
         this.reCLI = reCLI;
         this.conCLI = conCLI;
         this.regAlqui = regAlqui;
+        this.pri = pri;
         this.reCLI.btn_registrarCLI.addActionListener(this);
         this.reCLI.btn_limpiar.addActionListener(this);
 
+        reCLI.txt_bandera.setVisible(false);
+
+    }
+
+    public ControladorRegistroCLI(RegistroClientes reCLI, Cliente cliente) {
+        this.reCLI = reCLI;
+        this.cliente = cliente;
+        reCLI.txt_bandera.setText("1");
+        
     }
 
     @Override
@@ -69,26 +82,61 @@ public class ControladorRegistroCLI implements ActionListener {
                 cli = new Cliente(correo, direc, telef, priNombre, segNombre, apePa, apeMa,
                         Tipo_Documentos.valueOf(tipoDoc), numDoc, Estado_Persona.Activo);
 
-                if (conCLI.nDocRepe(numDoc)) {
-                    JOptionPane.showMessageDialog(null, "Este numero de Documento ya esta registrado");
-                } else if (conCLI.Registrar(cli)) {
+                if (reCLI.txt_bandera.getText().equals("0")) {
 
-                    Cliente newCliente = conCLI.getDatosCli(correo);
+                    if (conCLI.nDocRepe(numDoc)) {
+                        JOptionPane.showMessageDialog(null, "Este numero de Documento ya esta registrado");
+                    } else if (conCLI.Registrar(cli)) {
 
-                    if (newCliente != null) {
-                        
-                        newCliente.setCorreo(correo);
-                        JOptionPane.showMessageDialog(null, "Cliente Registrado correctamente");
-                        reCLI.dispose();
-                        
-                        Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(regAlqui, newCliente);
-                        conRegAlqui.mostrarVista();
+                        Cliente newCliente = conCLI.getDatosCli(correo);
+
+                        if (newCliente != null) {
+
+                            newCliente.setCorreo(correo);
+                            JOptionPane.showMessageDialog(null, "Cliente Registrado correctamente");
+                            reCLI.dispose();
+
+                            Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(regAlqui, newCliente);
+                            conRegAlqui.mostrarVista();
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error en el registro del usuario");
+                        limpiar();
                     }
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error en el registro del usuario");
-                    limpiar();
+                    //Parte del codigo cuando se vuelva de una interfaz anterior a la de registro de clientes
+                } else {                   
+                    
+                    //Obtenermos el ID de la persona
+                    String id = conCLI.getId(numDoc);
+                    cli.setId_persona(id);
+                    if (id != null) {
+
+                        if (conCLI.Repetido(id, numDoc)) {
+
+                            JOptionPane.showMessageDialog(null, "Este Documento ya existe en la Base de Datos");
+
+                        } else if (conCLI.Editar(cli)) {
+
+                            Cliente newCliente = conCLI.getDatosCli(correo);
+
+                            if (newCliente != null) {
+                                reCLI.dispose();
+
+                                newCliente.setCorreo(correo);
+                                Control_RegistroAlquiler conRegAlqui = new Control_RegistroAlquiler(regAlqui, newCliente);
+                                pri.Escritorio.add(regAlqui);
+                                conRegAlqui.mostrarVista();
+
+                            }
+
+                        }
+
+                    }
+
                 }
+
             }
 
         } else if (e.getSource() == reCLI.btn_limpiar) {
@@ -184,6 +232,35 @@ public class ControladorRegistroCLI implements ActionListener {
         reCLI.txt_correo_cli.setText("");
         reCLI.txt_telef_cli.setText("");
         reCLI.txt_direc_cli.setText("");
+
+    }
+
+    public void ultimoClie(Cliente c) {
+
+        reCLI.txt_priN_cli.setText(c.getPri_nombre());
+        reCLI.txt_segN_cli.setText(c.getSeg_nombre());
+        reCLI.txt_apeM_cli.setText(c.getApe_materno());
+        reCLI.txt_apeP_cli.setText(c.getApe_paterno());
+        reCLI.cbo_tiDoc.setSelectedItem(c.getTipo_doc());
+        reCLI.txt_numD_cli.setText(c.getNum_doc());
+        reCLI.txt_correo_cli.setText(c.getCorreo());
+        reCLI.txt_telef_cli.setText(c.getTelefono());
+        reCLI.txt_direc_cli.setText(c.getDireccion());
+
+        reCLI.txt_bandera.setText("1");
+        Editable();
+
+    }
+
+    private void Editable() {
+
+        if (reCLI.txt_correo_cli.getText() != null && !reCLI.txt_bandera.getText().equals("0")) {
+
+            reCLI.txt_correo_cli.setEditable(false);
+            reCLI.txt_numD_cli.setEditable(false);
+            reCLI.cbo_tiDoc.setEditable(false);
+
+        }
 
     }
 }

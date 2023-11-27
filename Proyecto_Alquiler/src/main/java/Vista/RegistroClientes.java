@@ -48,6 +48,7 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
         txt_apeM_cli = new javax.swing.JTextField();
         btn_registrarCLI = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
+        txt_bandera = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -121,6 +122,9 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
         btn_limpiar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btn_limpiar.setText("LIMPIAR");
 
+        txt_bandera.setEditable(false);
+        txt_bandera.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,12 +149,12 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
                                 .addComponent(btn_limpiar)
                                 .addGap(70, 70, 70)
                                 .addComponent(btn_registrarCLI))
-                            .addComponent(cbo_tiDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_correo_cli, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                                .addComponent(txt_numD_cli)
-                                .addComponent(txt_telef_cli)))
+                            .addComponent(txt_telef_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txt_correo_cli, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_numD_cli, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbo_tiDoc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -162,14 +166,15 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
                                 .addComponent(jLabel2)
                                 .addGap(75, 75, 75)
                                 .addComponent(txt_priN_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(30, 30, 30)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_apeP_cli, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(txt_apeM_cli))
+                    .addComponent(txt_apeM_cli)
+                    .addComponent(txt_bandera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -193,10 +198,15 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cbo_tiDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_numD_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txt_numD_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(txt_bandera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -251,6 +261,7 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField txt_apeM_cli;
     public javax.swing.JTextField txt_apeP_cli;
+    public javax.swing.JTextField txt_bandera;
     public javax.swing.JTextField txt_correo_cli;
     public javax.swing.JTextArea txt_direc_cli;
     public javax.swing.JTextField txt_numD_cli;

@@ -412,10 +412,11 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
         Cliente cli = null;
         ResultSet rs = null;
 
-        String query = "SELECT p.pri_nombre, p.seg_nombre, p.ape_paterno, p.ape_materno, c.telefono, p.num_doc\n"
-                + "FROM \n"
-                + "    Persona p\n"
-                + "INNER JOIN Cliente c ON p.id_persona = c.id_persona\n"
+        String query = "SELECT p.id_persona, p.pri_nombre, p.seg_nombre, p.ape_paterno, p.ape_materno, td.nombre_tipo, p.num_doc, p.estado, "
+                + "c.id_cliente, c.direccion, c.telefono, c.correo "
+                + "FROM Persona p "
+                + "INNER JOIN Cliente c ON p.id_persona = c.id_persona "
+                + "INNER JOIN Tipo_Documento td ON p.id_tipo_doc = td.id_tipo_doc "
                 + "WHERE c.correo = ?";
 
         try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
@@ -432,6 +433,9 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
                 cli.setApe_materno(rs.getString("ape_materno"));
                 cli.setTelefono(rs.getString("telefono"));
                 cli.setNum_doc(rs.getString("num_doc"));
+                cli.setTipo_doc(Tipo_Documentos.valueOf(rs.getString("nombre_tipo")));
+                cli.setDireccion(rs.getString("direccion"));
+                cli.setCorreo(correo);
 
             }
 

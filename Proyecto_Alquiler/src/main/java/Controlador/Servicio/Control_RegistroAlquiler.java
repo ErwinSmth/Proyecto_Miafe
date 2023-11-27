@@ -4,11 +4,15 @@
  */
 package Controlador.Servicio;
 
+import Controlador.ControladorRegistroCLI;
+import DAO.ConsultaCliente;
 import DAO.Servicio.AlquilerDAO;
 import Modelo.Cliente;
 import Modelo.Servicio.ContratoAlquiler;
 import Vista.AgregarItems;
+import Vista.Principal;
 import Vista.RegistrarAlquiler;
+import Vista.RegistroClientes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -25,11 +29,18 @@ public class Control_RegistroAlquiler implements ActionListener {
     private RegistrarAlquiler regAlqui;
     private Cliente cliente;
     private AgregarItems addItem;
+    private RegistroClientes regCli;
+    private ConsultaCliente conCli;
+    private Principal pri;
 
-    public Control_RegistroAlquiler(AlquilerDAO alquiDAO, RegistrarAlquiler regAlqui, AgregarItems addItem) {
+    public Control_RegistroAlquiler(AlquilerDAO alquiDAO, RegistrarAlquiler regAlqui, AgregarItems addItem, RegistroClientes regCli,
+            ConsultaCliente conCli, Principal pri) {
         this.alquiDAO = alquiDAO;
         this.regAlqui = regAlqui;
         this.addItem = addItem;
+        this.regCli = regCli;
+        this.conCli = conCli;
+        this.pri = pri;
         fechaActual();
 
         regAlqui.btn_continuar.addActionListener(this);
@@ -74,9 +85,21 @@ public class Control_RegistroAlquiler implements ActionListener {
             }
 
         } else if (e.getSource() == regAlqui.btn_cancelar) {
-            
-            regAlqui.dispose();
-            
+
+            Cliente ultCliente = conCli.getDatosCli(regAlqui.lbl_correo.getText());
+
+            if (ultCliente != null) {
+
+                regAlqui.dispose();
+
+                ControladorRegistroCLI conRCLI = new ControladorRegistroCLI(regCli, ultCliente);
+
+                conRCLI.ultimoClie(ultCliente);
+                pri.Escritorio.add(regCli);
+                regCli.setVisible(true);
+
+            }
+
         }
 
     }

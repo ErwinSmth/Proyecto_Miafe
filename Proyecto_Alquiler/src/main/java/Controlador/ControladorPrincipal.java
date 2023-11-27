@@ -4,13 +4,6 @@
  */
 package Controlador;
 
-import Controlador.Inventariado.ControlCategoria;
-import Controlador.Inventariado.Control_AgregarPro;
-
-import DAO.Inventariado.ConsultaCategoria;
-import DAO.Inventariado.ConsultaProducto;
-
-import Modelo.Roles_Usuarios;
 import Modelo.Usuario;
 import Vista.AgregarItems;
 
