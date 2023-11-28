@@ -47,10 +47,10 @@ public class Gestion_UsuariosINACT extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla_usINAC);
 
-        btn_reactivar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_reactivar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_reactivar.setText("Reactivar");
 
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -68,28 +68,28 @@ public class Gestion_UsuariosINACT extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(202, 202, 202)
                 .addComponent(btn_actualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 344, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addComponent(btn_reactivar)
                 .addGap(218, 218, 218))
             .addGroup(layout.createSequentialGroup()
-                .addGap(343, 343, 343)
+                .addGap(380, 380, 380)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addComponent(jLabel1)
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_reactivar)
                     .addComponent(btn_actualizar))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();

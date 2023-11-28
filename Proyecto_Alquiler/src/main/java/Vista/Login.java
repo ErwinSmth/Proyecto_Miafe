@@ -31,79 +31,61 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txt_numDOC = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txt_contra = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         btn_ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(450, 500));
+        setMinimumSize(new java.awt.Dimension(450, 500));
+        setPreferredSize(new java.awt.Dimension(450, 500));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Num. de documento");
+        jPanel1.setBackground(new java.awt.Color(251, 233, 225));
+        jPanel1.setMinimumSize(new java.awt.Dimension(450, 450));
+        jPanel1.setPreferredSize(new java.awt.Dimension(450, 450));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 3, 18)); // NOI18N
+        jLabel3.setText("INICIAR SESIÓN");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
+        jLabel1.setText("Num. Documento");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        jPanel1.add(txt_numDOC, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 156, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         jLabel2.setText("Contraseña");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+        jPanel1.add(txt_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 156, -1));
 
-        txt_numDOC.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txt_numDOC.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Github-Trabajos\\Proyecto_Miafe\\Proyecto_Alquiler\\src\\main\\java\\Iconos\\logo0.jpg")); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 190, 190));
+
+        btn_ingresar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
+        btn_ingresar.setText("Ingresar");
+        btn_ingresar.setPreferredSize(new java.awt.Dimension(90, 26));
+        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_numDOCActionPerformed(evt);
+                btn_ingresarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, -1));
 
-        txt_contra.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        btn_ingresar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btn_ingresar.setText("Ingresar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(txt_numDOC, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(btn_ingresar)))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txt_numDOC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel2))
-                    .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77)
-                .addComponent(btn_ingresar)
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_numDOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_numDOCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_numDOCActionPerformed
+    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+
+    }//GEN-LAST:event_btn_ingresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,6 +126,9 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JButton btn_ingresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField txt_contra;
     public javax.swing.JTextField txt_numDOC;
     // End of variables declaration//GEN-END:variables

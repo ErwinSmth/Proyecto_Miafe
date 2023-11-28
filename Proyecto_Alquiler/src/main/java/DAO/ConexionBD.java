@@ -28,7 +28,7 @@ public class ConexionBD {
     public Connection conectar() {
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tienda_miafe", "Admin_Miafe", "12345");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Tienda_MiaFe","Admin_MiaFe", "12345");
             return con;
         } catch (SQLException e) {
             e.printStackTrace();

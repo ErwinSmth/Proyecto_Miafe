@@ -37,12 +37,26 @@ public class Control_AgregarItem implements ActionListener {
         addItem.btn_actualizar.addActionListener(this);
         addItem.btn_eliminar.addActionListener(this);
         addItem.btn_Editar.addActionListener(this);
+
+        addItem.btn_Editar.setVisible(false);
+        addItem.btn_eliminar.setVisible(false);
+        addItem.jLabel4.setVisible(false);
+        addItem.calendario.setVisible(false);
+        addItem.btn_cancelar.setVisible(false);
+        addItem.btn_contrato.setVisible(false);
     }
 
     public Control_AgregarItem(AgregarItems addItem, String correo, String idAlquiler) {
         this.addItem = addItem;
         this.correo = correo;
         this.idAlquiler = idAlquiler;
+
+        addItem.btn_Editar.setVisible(false);
+        addItem.btn_eliminar.setVisible(false);
+        addItem.jLabel4.setVisible(false);
+        addItem.calendario.setVisible(false);
+        addItem.btn_cancelar.setVisible(false);
+        addItem.btn_contrato.setVisible(false);
     }
 
     @Override

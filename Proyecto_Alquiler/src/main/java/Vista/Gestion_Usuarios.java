@@ -26,17 +26,16 @@ public class Gestion_Usuarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         txt_priN_us = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_segN_us = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        cbo_tiDoc = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        txt_apeP_us = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txt_apeM_us = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txt_apeP_us = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cbo_tiDoc = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         txt_numD_us = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -53,53 +52,115 @@ public class Gestion_Usuarios extends javax.swing.JInternalFrame {
         btn_actualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(251, 233, 225));
         setClosable(true);
+        setResizable(true);
+        setMaximumSize(new java.awt.Dimension(1100, 650));
+        setMinimumSize(new java.awt.Dimension(1100, 650));
+        setOpaque(true);
+        setPreferredSize(new java.awt.Dimension(1100, 650));
+        getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel2.setText("Primer Nombre");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 410, 90, 22);
 
         txt_priN_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_priN_us.setMaximumSize(new java.awt.Dimension(140, 22));
+        txt_priN_us.setMinimumSize(new java.awt.Dimension(140, 22));
+        txt_priN_us.setPreferredSize(new java.awt.Dimension(140, 22));
+        getContentPane().add(txt_priN_us);
+        txt_priN_us.setBounds(150, 410, 140, 22);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel3.setText("Segundo Nombre");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 460, 99, 22);
 
         txt_segN_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_segN_us.setMaximumSize(new java.awt.Dimension(140, 22));
+        txt_segN_us.setMinimumSize(new java.awt.Dimension(140, 22));
+        txt_segN_us.setPreferredSize(new java.awt.Dimension(140, 22));
+        getContentPane().add(txt_segN_us);
+        txt_segN_us.setBounds(150, 460, 140, 22);
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setText("Tipo de Documento");
-
-        cbo_tiDoc.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cbo_tiDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Ced_Identidad", "Carne_Extrangeria", " " }));
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setText("Apellido Paterno");
-
-        txt_apeP_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel6.setText("Apellido Materno");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(350, 410, 92, 22);
 
         txt_apeM_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_apeM_us.setMaximumSize(new java.awt.Dimension(140, 22));
+        txt_apeM_us.setMinimumSize(new java.awt.Dimension(140, 22));
+        txt_apeM_us.setPreferredSize(new java.awt.Dimension(140, 22));
+        txt_apeM_us.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_apeM_usActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_apeM_us);
+        txt_apeM_us.setBounds(470, 410, 140, 22);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jLabel5.setText("Apellido Paterno");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(350, 460, 91, 22);
+
+        txt_apeP_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_apeP_us.setMaximumSize(new java.awt.Dimension(140, 22));
+        txt_apeP_us.setMinimumSize(new java.awt.Dimension(140, 22));
+        txt_apeP_us.setPreferredSize(new java.awt.Dimension(140, 22));
+        getContentPane().add(txt_apeP_us);
+        txt_apeP_us.setBounds(470, 460, 140, 22);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jLabel4.setText("Tipo de Documento");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(640, 410, 108, 22);
+
+        cbo_tiDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Ced_Identidad", "Carne_Extrangeria", " " }));
+        getContentPane().add(cbo_tiDoc);
+        cbo_tiDoc.setBounds(770, 410, 129, 30);
+
+        jLabel7.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel7.setText("Num. Doc");
         jLabel7.setToolTipText("");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(350, 510, 70, 22);
 
         txt_numD_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_numD_us.setMaximumSize(new java.awt.Dimension(140, 22));
+        txt_numD_us.setMinimumSize(new java.awt.Dimension(140, 22));
+        txt_numD_us.setPreferredSize(new java.awt.Dimension(140, 22));
+        getContentPane().add(txt_numD_us);
+        txt_numD_us.setBounds(470, 510, 140, 22);
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel8.setText("Contraseña");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(40, 510, 64, 22);
 
         txt_contra.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_contra.setMaximumSize(new java.awt.Dimension(140, 22));
+        txt_contra.setMinimumSize(new java.awt.Dimension(140, 22));
+        txt_contra.setPreferredSize(new java.awt.Dimension(140, 22));
+        getContentPane().add(txt_contra);
+        txt_contra.setBounds(150, 510, 140, 22);
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel9.setText("Rol");
+        jLabel9.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jLabel9.setText("Rol de Trabajo");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(640, 460, 90, 22);
 
-        cbo_Rol.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cbo_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Caja" }));
+        getContentPane().add(cbo_Rol);
+        cbo_Rol.setBounds(770, 460, 130, 30);
 
-        btn_registrarUS.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_registrarUS.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_registrarUS.setText("Registrar");
+        getContentPane().add(btn_registrarUS);
+        btn_registrarUS.setBounds(650, 520, 100, 26);
 
         tabla_us.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         tabla_us.setModel(new javax.swing.table.DefaultTableModel(
@@ -112,145 +173,45 @@ public class Gestion_Usuarios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla_us);
 
-        btn_editar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 70, 990, 250);
+
+        btn_editar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_editar.setText("Editar");
+        getContentPane().add(btn_editar);
+        btn_editar.setBounds(810, 520, 86, 26);
 
-        btn_obtener.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_obtener.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_obtener.setText("Obtener");
+        getContentPane().add(btn_obtener);
+        btn_obtener.setBounds(40, 340, 86, 26);
 
-        btn_limpiar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_limpiar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_limpiar.setText("Limpiar");
+        getContentPane().add(btn_limpiar);
+        btn_limpiar.setBounds(160, 340, 86, 26);
 
-        btn_eliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_eliminar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
+        getContentPane().add(btn_eliminar);
+        btn_eliminar.setBounds(280, 340, 86, 26);
 
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
+        getContentPane().add(btn_actualizar);
+        btn_actualizar.setBounds(930, 340, 100, 26);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Usuarios Activos");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(btn_obtener)
-                        .addGap(157, 157, 157)
-                        .addComponent(btn_actualizar)
-                        .addGap(112, 112, 112)
-                        .addComponent(btn_limpiar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btn_editar)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(36, 36, 36)))
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jLabel9)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbo_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(txt_priN_us, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel3))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(txt_apeP_us, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel6)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_apeM_us, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_segN_us, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(btn_registrarUS))
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbo_tiDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btn_eliminar)
-                                        .addGap(216, 216, 216))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_numD_us, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(453, 453, 453)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_obtener)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_limpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_priN_us, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_segN_us, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbo_tiDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_apeP_us, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_apeM_us, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txt_numD_us, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cbo_Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_registrarUS)
-                    .addComponent(btn_editar)
-                    .addComponent(btn_eliminar)))
-        );
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(460, 30, 150, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_apeM_usActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apeM_usActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_apeM_usActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,7 +233,6 @@ public class Gestion_Usuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     public javax.swing.JTable tabla_us;
     public javax.swing.JTextField txt_apeM_us;
     public javax.swing.JTextField txt_apeP_us;

@@ -50,17 +50,18 @@ public class Gestion_Productos extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Productos");
 
-        btn_eliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_eliminar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
 
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
 
-        btn_precio.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_precio.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_precio.setText("Editar Precio");
 
-        btn_disponible.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btn_disponible.setText("Agregar mas disponibles");
+        btn_disponible.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
+        btn_disponible.setText("Agregar mas Mobiliarios");
+        btn_disponible.setActionCommand("Agregar mas Mobiliarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,15 +72,15 @@ public class Gestion_Productos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_eliminar)
-                        .addGap(52, 52, 52)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_actualizar)
-                        .addGap(46, 46, 46)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_precio)
-                        .addGap(36, 36, 36)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_disponible))
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,14 +88,14 @@ public class Gestion_Productos extends javax.swing.JInternalFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_eliminar)
                     .addComponent(btn_actualizar)
                     .addComponent(btn_precio)
                     .addComponent(btn_disponible))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         pack();

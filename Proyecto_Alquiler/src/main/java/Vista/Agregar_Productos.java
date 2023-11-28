@@ -42,57 +42,63 @@ public class Agregar_Productos extends javax.swing.JInternalFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 24, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 20));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel2.setText("Cantidad a Agregar");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 20));
 
         txt_nomb.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_nomb.setToolTipText("");
-        jPanel2.add(txt_nomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 195, -1));
+        txt_nomb.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_nomb.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_nomb.setPreferredSize(new java.awt.Dimension(130, 22));
+        jPanel2.add(txt_nomb, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 195, -1));
 
         txt_cant.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel2.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 150, -1));
+        txt_cant.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_cant.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_cant.setPreferredSize(new java.awt.Dimension(130, 22));
+        jPanel2.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 150, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel5.setText("Precio");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, 20));
 
         txt_precio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 180, -1));
+        txt_precio.setMaximumSize(new java.awt.Dimension(100, 22));
+        txt_precio.setMinimumSize(new java.awt.Dimension(100, 22));
+        txt_precio.setPreferredSize(new java.awt.Dimension(100, 22));
+        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 60, -1));
 
-        btn_agregar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_agregar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_agregar.setText("Agregar");
-        jPanel2.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
+        jPanel2.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel3.setText("Categorias");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 20));
 
-        cbo_CATE.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jPanel2.add(cbo_CATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
+        cbo_CATE.setMaximumSize(new java.awt.Dimension(130, 22));
+        cbo_CATE.setMinimumSize(new java.awt.Dimension(130, 22));
+        cbo_CATE.setPreferredSize(new java.awt.Dimension(130, 22));
+        jPanel2.add(cbo_CATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
-        jPanel2.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
+        jPanel2.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
         );
 
         pack();

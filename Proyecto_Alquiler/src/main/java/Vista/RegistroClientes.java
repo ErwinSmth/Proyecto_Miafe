@@ -53,181 +53,149 @@ public class RegistroClientes extends javax.swing.JInternalFrame  {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(true);
+        setMaximumSize(new java.awt.Dimension(700, 600));
+        setMinimumSize(new java.awt.Dimension(700, 600));
+        setPreferredSize(new java.awt.Dimension(700, 600));
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("CLIENTE");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(310, 20, 87, 32);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel2.setText("Primer nombre:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(51, 125, 87, 15);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel3.setText("Apellido paterno:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(390, 80, 93, 20);
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel4.setText("Tipo de Documento:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(50, 160, 111, 20);
 
-        cbo_tiDoc.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cbo_tiDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Ced_Identidad", "Carnet_Extranjería" }));
+        cbo_tiDoc.setMaximumSize(new java.awt.Dimension(130, 22));
+        cbo_tiDoc.setMinimumSize(new java.awt.Dimension(130, 22));
+        cbo_tiDoc.setPreferredSize(new java.awt.Dimension(130, 22));
+        getContentPane().add(cbo_tiDoc);
+        cbo_tiDoc.setBounds(190, 160, 130, 22);
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel5.setText("Número de documento:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(50, 200, 130, 20);
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel6.setText("Correo electrónico:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(50, 240, 104, 20);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel7.setText("Número telefónico:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(50, 280, 104, 20);
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel8.setText("Dirección:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(50, 320, 55, 20);
 
         txt_priN_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_priN_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_priN_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_priN_cli.setPreferredSize(new java.awt.Dimension(130, 22));
         txt_priN_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_priN_cliActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_priN_cli);
+        txt_priN_cli.setBounds(190, 80, 137, 22);
 
         txt_numD_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_numD_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_numD_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_numD_cli.setPreferredSize(new java.awt.Dimension(130, 22));
         txt_numD_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_numD_cliActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_numD_cli);
+        txt_numD_cli.setBounds(190, 200, 130, 22);
 
         txt_correo_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_correo_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_correo_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_correo_cli.setPreferredSize(new java.awt.Dimension(130, 22));
+        getContentPane().add(txt_correo_cli);
+        txt_correo_cli.setBounds(190, 240, 130, 22);
 
         txt_apeP_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_apeP_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_apeP_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_apeP_cli.setPreferredSize(new java.awt.Dimension(130, 22));
+        getContentPane().add(txt_apeP_cli);
+        txt_apeP_cli.setBounds(510, 80, 138, 22);
 
         txt_telef_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_telef_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_telef_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_telef_cli.setPreferredSize(new java.awt.Dimension(130, 22));
+        getContentPane().add(txt_telef_cli);
+        txt_telef_cli.setBounds(190, 280, 137, 22);
 
         txt_direc_cli.setColumns(20);
         txt_direc_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_direc_cli.setRows(5);
         jScrollPane1.setViewportView(txt_direc_cli);
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(190, 320, 294, 126);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel9.setText("Segundo nombre:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(50, 80, 100, 20);
 
         txt_segN_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_segN_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_segN_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_segN_cli.setPreferredSize(new java.awt.Dimension(130, 22));
+        getContentPane().add(txt_segN_cli);
+        txt_segN_cli.setBounds(190, 120, 137, 22);
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel10.setText("Apellido materno:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(390, 120, 97, 20);
 
         txt_apeM_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_apeM_cli.setMaximumSize(new java.awt.Dimension(130, 22));
+        txt_apeM_cli.setMinimumSize(new java.awt.Dimension(130, 22));
+        txt_apeM_cli.setPreferredSize(new java.awt.Dimension(130, 22));
+        getContentPane().add(txt_apeM_cli);
+        txt_apeM_cli.setBounds(510, 120, 138, 22);
 
-        btn_registrarCLI.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_registrarCLI.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_registrarCLI.setText("CONTINUAR");
+        getContentPane().add(btn_registrarCLI);
+        btn_registrarCLI.setBounds(290, 480, 130, 26);
 
-        btn_limpiar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_limpiar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_limpiar.setText("LIMPIAR");
+        getContentPane().add(btn_limpiar);
+        btn_limpiar.setBounds(50, 370, 90, 26);
 
         txt_bandera.setEditable(false);
         txt_bandera.setText("0");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_limpiar)
-                                .addGap(70, 70, 70)
-                                .addComponent(btn_registrarCLI))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_telef_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_correo_cli, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_numD_cli, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cbo_tiDoc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(56, 56, 56)
-                                .addComponent(txt_segN_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(75, 75, 75)
-                                .addComponent(txt_priN_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(30, 30, 30)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_apeP_cli, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(txt_apeM_cli)
-                    .addComponent(txt_bandera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_priN_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_apeP_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txt_segN_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(txt_apeM_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbo_tiDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txt_numD_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(txt_bandera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_correo_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txt_telef_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel8)))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_registrarCLI)
-                    .addComponent(btn_limpiar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(txt_bandera);
+        txt_bandera.setBounds(595, 241, 64, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

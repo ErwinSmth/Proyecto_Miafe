@@ -55,14 +55,15 @@ public class Gestion_Clientes extends javax.swing.JInternalFrame {
         btn_eliminar = new javax.swing.JButton();
         btn_reactivar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla_cli1 = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
 
         setClosable(true);
         setResizable(true);
-        setMinimumSize(new java.awt.Dimension(997, 684));
+        setMaximumSize(new java.awt.Dimension(1200, 700));
+        setMinimumSize(new java.awt.Dimension(1200, 700));
+        setPreferredSize(new java.awt.Dimension(1200, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabla_clINAC.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -76,125 +77,130 @@ public class Gestion_Clientes extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla_clINAC);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, 1180, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1160, 140));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Clientes Registrados");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
-        btn_obtener.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_obtener.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_obtener.setText("Obtener");
-        getContentPane().add(btn_obtener, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
+        getContentPane().add(btn_obtener, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
-        btn_actualizar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
-        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel2.setText("Primer Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, 20));
 
         txt_priN_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_priN_cli.setMinimumSize(new java.awt.Dimension(140, 22));
         txt_priN_cli.setPreferredSize(new java.awt.Dimension(140, 22));
-        getContentPane().add(txt_priN_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 140, -1));
+        getContentPane().add(txt_priN_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 140, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel3.setText("Segundo Nombre");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, 20));
 
         txt_segN_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_segN_cli.setMinimumSize(new java.awt.Dimension(140, 22));
         txt_segN_cli.setPreferredSize(new java.awt.Dimension(140, 22));
-        getContentPane().add(txt_segN_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 140, -1));
+        getContentPane().add(txt_segN_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 140, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel5.setText("Apellido Paterno");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, -1, 20));
 
         txt_apeP_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_apeP_cli.setMinimumSize(new java.awt.Dimension(140, 22));
         txt_apeP_cli.setPreferredSize(new java.awt.Dimension(140, 22));
-        getContentPane().add(txt_apeP_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 140, -1));
+        getContentPane().add(txt_apeP_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 140, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel6.setText("Apellido Materno");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, 20));
 
         txt_apeM_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_apeM_cli.setMinimumSize(new java.awt.Dimension(140, 22));
         txt_apeM_cli.setPreferredSize(new java.awt.Dimension(140, 22));
-        getContentPane().add(txt_apeM_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 140, -1));
+        getContentPane().add(txt_apeM_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 140, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel4.setText("Tipo de Documento");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, -1, 20));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, -1, 20));
 
-        cbo_tiDoc.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cbo_tiDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Ced_Identidad", "Carne_Extrangeria" }));
-        getContentPane().add(cbo_tiDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 380, -1, -1));
+        getContentPane().add(cbo_tiDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel7.setText("Num. Doc");
         jLabel7.setToolTipText("");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, -1, 20));
 
         txt_numD_cli.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_numD_cli.setMinimumSize(new java.awt.Dimension(140, 22));
         txt_numD_cli.setPreferredSize(new java.awt.Dimension(140, 22));
-        getContentPane().add(txt_numD_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 430, 140, -1));
+        getContentPane().add(txt_numD_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 140, -1));
 
-        btn_editar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_editar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_editar.setText("Editar");
-        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, -1, -1));
 
-        btn_limpiar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_limpiar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_limpiar.setText("Limpiar");
-        getContentPane().add(btn_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
+        getContentPane().add(btn_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel8.setText("Correo");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 90, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 90, 20));
 
         txt_correo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txt_correo.setMaximumSize(new java.awt.Dimension(200, 22));
+        txt_correo.setMinimumSize(new java.awt.Dimension(200, 22));
+        txt_correo.setPreferredSize(new java.awt.Dimension(200, 22));
         txt_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_correoActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 140, -1));
+        getContentPane().add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, 200, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel9.setText("Direccion");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, 100, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 60, 30));
 
         txa_direccion.setColumns(20);
         txa_direccion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txa_direccion.setRows(5);
         jScrollPane2.setViewportView(txa_direccion);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, 130));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel10.setText("Telefono");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, 100, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 50, 20));
 
         txt_telefo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        getContentPane().add(txt_telefo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 490, 140, -1));
+        txt_telefo.setMaximumSize(new java.awt.Dimension(64, 22));
+        txt_telefo.setMinimumSize(new java.awt.Dimension(64, 22));
+        txt_telefo.setPreferredSize(new java.awt.Dimension(64, 22));
+        getContentPane().add(txt_telefo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 140, -1));
 
-        btn_eliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_eliminar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, -1, -1));
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 360, -1, -1));
 
-        btn_reactivar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btn_reactivar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btn_reactivar.setText("Reactivar");
-        getContentPane().add(btn_reactivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, -1, -1));
+        getContentPane().add(btn_reactivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 190, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setText("ACTIVOS");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1230, 10));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
+        tabla_cli1.setAutoCreateRowSorter(true);
         tabla_cli1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         tabla_cli1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,13 +210,14 @@ public class Gestion_Clientes extends javax.swing.JInternalFrame {
 
             }
         ));
+        tabla_cli1.setMaximumSize(new java.awt.Dimension(100, 60));
         jScrollPane3.setViewportView(tabla_cli1);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 1160, 280));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 1160, 130));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel12.setText("INACTIVOS");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,7 +250,6 @@ public class Gestion_Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
     public javax.swing.JTable tabla_clINAC;
     public javax.swing.JTable tabla_cli1;
     public javax.swing.JTextArea txa_direccion;
