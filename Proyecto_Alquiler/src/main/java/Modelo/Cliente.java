@@ -66,6 +66,11 @@ public class Cliente extends Persona {
         this.id_cliente = id_cliente;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" + "id_cliente=" + id_cliente + ", correo=" + correo + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+    }
+
     
     
 }

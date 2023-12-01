@@ -397,15 +397,10 @@ public class AlquilerDAO {
             ps.setDate(1, fechaSQL);
 
             //Calcular la cantidad de todos los items asociados a un contrato
-            int cantTotal = 0;
-            for (Item item : obj.getItemsAlquiler()) {
-                cantTotal += item.getCantidad();
-            }
-            ps.setInt(2, cantTotal);
+            ps.setInt(2, obj.getCantidadTotal());
 
             //Calcular el costo total de los items asociados a un contrato
-            float costoTotal = obj.costoTotal(obj.getItemsAlquiler());
-            ps.setFloat(3, costoTotal);
+            ps.setFloat(3, obj.getCostolTotal());
 
             ps.setString(4, obj.getCliente().getCorreo());
 

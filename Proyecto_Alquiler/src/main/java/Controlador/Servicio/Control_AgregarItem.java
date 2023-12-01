@@ -4,13 +4,19 @@
  */
 package Controlador.Servicio;
 
+import DAO.ConsultaCliente;
 import DAO.Servicio.AlquilerDAO;
+import Modelo.Cliente;
 import Modelo.Inventariado.Producto;
 import Modelo.Servicio.ContratoAlquiler;
 import Modelo.Servicio.Item;
 import Vista.AgregarItems;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,18 +31,22 @@ public class Control_AgregarItem implements ActionListener {
     private String idAlquiler;
     private AlquilerDAO alquiDAO;
     private AgregarItems addItem;
+    private ConsultaCliente conCli;
 
-    public Control_AgregarItem(AlquilerDAO alquiDAO, AgregarItems addItem) {
+    public Control_AgregarItem(AlquilerDAO alquiDAO, AgregarItems addItem, ConsultaCliente conCli) {
         this.alquiDAO = alquiDAO;
         this.addItem = addItem;
+        this.conCli = conCli;
         mostrarProductos();
         seleccionados();
+        Totales();
         addItem.btn_buscar.addActionListener(this);
         addItem.btn_añadir.addActionListener(this);
         addItem.btn_cancelar.addActionListener(this);
         addItem.btn_actualizar.addActionListener(this);
         addItem.btn_eliminar.addActionListener(this);
         addItem.btn_Editar.addActionListener(this);
+        addItem.btn_contrato.addActionListener(this);
     }
 
     public Control_AgregarItem(AgregarItems addItem, String correo, String idAlquiler) {
@@ -120,6 +130,7 @@ public class Control_AgregarItem implements ActionListener {
                                 addItem.txt_filtrar.setText("");
                                 mostrarProductos();
                                 seleccionados();
+                                Totales();
                             } else {
                                 JOptionPane.showMessageDialog(null, "Ocurrio un Error en la actualizacion del inventario");
                             }
@@ -145,6 +156,7 @@ public class Control_AgregarItem implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Eliminado Correctamente");
                 mostrarProductos();
                 seleccionados();
+                addItem.dispose();
 
             }
 
@@ -169,6 +181,7 @@ public class Control_AgregarItem implements ActionListener {
 
                         mostrarProductos();
                         seleccionados();
+                        Totales();
 
                     }
 
@@ -210,6 +223,7 @@ public class Control_AgregarItem implements ActionListener {
                         if (resultado == 1) {
                             mostrarProductos();
                             seleccionados();
+                            Totales();
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al actualizar la cantidad");
                         }
@@ -221,6 +235,39 @@ public class Control_AgregarItem implements ActionListener {
 
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un producto");
+            }
+
+        } else if (e.getSource() == addItem.btn_contrato) {
+
+            Date fecha = addItem.jdate_fechaDevolu.getDate();
+            if (fecha != null) { 
+
+                Instant instante = fecha.toInstant(); 
+                LocalDate fechaDevolucion = instante.atZone(ZoneId.systemDefault()).toLocalDate();
+
+                LocalDate fechaActual = LocalDate.now();
+
+                if (fechaDevolucion.isBefore(fechaActual)) {
+                    JOptionPane.showMessageDialog(null, "La fecha de entrega debe ser posterior a la fecha actual");
+                } else {
+                    ContratoAlquiler contrato = new ContratoAlquiler();
+
+                    contrato.setFecha_entrega(fechaDevolucion);
+                    Cliente cliente = conCli.getDatosCli(addItem.lbl_correo.getText());
+                    System.out.println(cliente.toString());
+                    contrato.setCliente(cliente);
+                    contrato.setCantidadTotal(Integer.parseInt(addItem.txt_cantidad.getText()));
+                    contrato.setCostolTotal(Float.parseFloat(addItem.txt_precioTotal.getText()));
+
+                    if (alquiDAO.terminarContrato(contrato) == 1) {
+                        System.out.println("Exito");
+                        addItem.dispose();
+                    } else {
+                        System.out.println("Ocurrio un error");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha de entrega");
             }
 
         }
@@ -293,6 +340,30 @@ public class Control_AgregarItem implements ActionListener {
 
             addItem.table_selected.setModel(tseleccionados);
         }
+
+    }
+
+    private void Totales() {
+
+        DefaultTableModel modelo = (DefaultTableModel) addItem.table_selected.getModel();
+        int columna = modelo.getRowCount();
+
+        float precioTotal = 0.0f;
+        int cantidadTotal = 0;
+
+        for (int i = 0; i < columna; i++) {
+
+            float precioAlquiler = Float.parseFloat(modelo.getValueAt(i, 2).toString());
+            int cantidadAlquiler = Integer.parseInt(modelo.getValueAt(i, 1).toString());
+
+            precioTotal += precioAlquiler;
+            cantidadTotal += cantidadAlquiler;
+
+        }
+
+        //Actualizamos los text field
+        addItem.txt_cantidad.setText(String.valueOf(cantidadTotal));
+        addItem.txt_precioTotal.setText(String.valueOf(precioTotal));
 
     }
 

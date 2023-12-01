@@ -424,6 +424,8 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
             if (rs.next()) {
 
                 cli = new Cliente();
+                cli.setId_cliente(rs.getString("id_cliente"));
+                cli.setId_persona(rs.getString("id_persona"));
                 cli.setPri_nombre(rs.getString("pri_nombre"));
                 cli.setSeg_nombre(rs.getString("seg_nombre"));
                 cli.setApe_paterno(rs.getString("ape_paterno"));
