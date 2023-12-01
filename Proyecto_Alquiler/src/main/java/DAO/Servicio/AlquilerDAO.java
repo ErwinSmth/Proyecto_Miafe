@@ -117,19 +117,12 @@ public class AlquilerDAO {
         return idAquiler;
     }
 
-    //Metodo que se usara para registrar un Alquiler(Se hara uso de la tabla Alquiler), los objetos se añadiran
+//Metodo que se usara para registrar un Alquiler(Se hara uso de la tabla Alquiler), los objetos se añadiran
     //al alquiler en otro metodo
     public int addAlquiler(ContratoAlquiler obj) {
 
         String query = "Insert into Alquiler (id_cliente, fecha_contrato) values (?, ?)";
-<<<<<<< HEAD
         try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
-=======
-
-        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);) {
-
-            conectar.conectar().setAutoCommit(false);
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
             ps.setString(1, obj.getCliente().getId_cliente());
 
@@ -140,14 +133,7 @@ public class AlquilerDAO {
             int exito = ps.executeUpdate();
 
             if (exito > 0) {
-<<<<<<< HEAD
                 return 1;
-=======
-                conectar.conectar().commit();
-                return 1;
-            } else {
-                conectar.conectar().rollback();
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             }
 
         } catch (Exception e) {
@@ -186,23 +172,11 @@ public class AlquilerDAO {
 
     //Este metodo se usara si en caso el cliente desea cancelar un alquiler 
     public int eliminarAlquiler(ContratoAlquiler obj) {
-<<<<<<< HEAD
         String query = "DELETE FROM Alquiler_Inventario WHERE id_alquiler = ?";
         String seleccionados = "SELECT nombre, cantidad_alquilada FROM Alquiler_Inventario WHERE id_alquiler = ?";
         String borrarAlquiler = "DELETE FROM Alquiler WHERE id_alquiler = ?";
 
         try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  PreparedStatement psSelect = conectar.conectar().prepareStatement(seleccionados);  PreparedStatement psBorrarAlquiler = conectar.conectar().prepareStatement(borrarAlquiler)) {
-=======
-        String query = "Delete from Alquiler_Inventario WHERE id_alquiler = ?";
-        String seleccionados = "SELECT nombre, cantidad_alquilada FROM Alquiler_Inventario WHERE id_alquiler = ?";
-        String borrarAlquiler = "DELETE FROM Alquiler WHERE id_alquiler = ?";
-
-        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  
-                PreparedStatement psSelect = conectar.conectar().prepareStatement(seleccionados);  
-                PreparedStatement psBorrarAlquiler = conectar.conectar().prepareStatement(borrarAlquiler)) {
-
-            conectar.conectar().setAutoCommit(false);
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
             psSelect.setString(1, obj.getId_alquiler());
             ResultSet rs = psSelect.executeQuery();
@@ -230,20 +204,9 @@ public class AlquilerDAO {
             psBorrarAlquiler.setString(1, obj.getId_alquiler());
             psBorrarAlquiler.executeUpdate();
 
-            conectar.conectar().commit();
             return 1;
 
         } catch (SQLException e) {
-<<<<<<< HEAD
-=======
-            if (conectar.conectar() != null) {
-                try {
-                    conectar.conectar().rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             e.printStackTrace();
         }
         return 2;
@@ -259,8 +222,6 @@ public class AlquilerDAO {
 
         try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
-            conectar.conectar().setAutoCommit(false);
-            
             ps.setInt(1, idAlquiler);
             ps.setString(2, i.getProducto().getNom_pro());
             ps.setInt(3, i.getCantidad());
@@ -273,14 +234,8 @@ public class AlquilerDAO {
             int fila = ps.executeUpdate();
 
             if (fila > 0) {
-<<<<<<< HEAD
 
-=======
-                conectar.conectar().commit();
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
                 return 1;
-            } else {
-                conectar.conectar().rollback();
             }
 
         } catch (Exception e) {
@@ -296,11 +251,7 @@ public class AlquilerDAO {
         String query = "Update Alquiler_Inventario SET cantidad_alquilada = ?, precio_alquiler = ? WHERE id_alquiler = ? AND nombre = ?";
         String cantAnterior = "SELECT cantidad_alquilada FROM Alquiler_Inventario WHERE id_alquiler = ? AND nombre = ?";
 
-<<<<<<< HEAD
         try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  PreparedStatement ps2 = conectar.conectar().prepareStatement(cantAnterior)) {
-=======
-        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
             //La nueva cantidad 
             ps.setInt(1, nuevaCant);
@@ -533,12 +484,7 @@ public class AlquilerDAO {
     }
 
     public int eliminarPro(String nombrePro, int idAlquiler) {
-<<<<<<< HEAD
         String query = "DELETE FROM Alquiler_Inventario WHERE nombre = ? and id_alquiler = ?";
-=======
-
-        String query = "DELETE FROM Alquiler_Inventario WHERE nombre = ?, id_alquiler = ?";
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
         try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 

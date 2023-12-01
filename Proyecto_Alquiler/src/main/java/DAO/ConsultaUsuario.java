@@ -113,11 +113,6 @@ public class ConsultaUsuario implements EntidadDAO<Usuario> {
 
         try {
 
-<<<<<<< HEAD
-=======
-            conectar.conectar().setAutoCommit(false);
-
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             //Si no existe, procede con el registro de la persona
             ps = conectar.conectar().prepareStatement(consultaPersona);
             ps.setString(1, entidad.getPri_nombre());
@@ -148,31 +143,25 @@ public class ConsultaUsuario implements EntidadDAO<Usuario> {
 
             int resPersona = ps.executeUpdate();
 
-<<<<<<< HEAD
             if (resPersona > 0) {
                 int ultimoID = coF.obtenerUltimoID();
-=======
-            int ultimoID = coF.obtenerUltimoID();
 
-            ps = conectar.conectar().prepareStatement(consultaEmpleado);
-            ps.setInt(1, ultimoID);
-            ps.setString(2, entidad.getContraseña());
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
+                ps = conectar.conectar().prepareStatement(consultaEmpleado);
+                ps.setInt(1, ultimoID);
+                ps.setString(2, entidad.getContraseña());
 
-            //-----------------------Rol del Usuario--------------------------------------------------------------------
-            int idRol = 1;
-            if (entidad.getRol() == Roles_Usuarios.Caja) {
-                idRol = 2;
-            }
-            ps.setInt(3, idRol);
-            //---------------------------------------------------------------------------------------------------------
-            int resEmpleado = ps.executeUpdate();
+                //-----------------------Rol del Usuario--------------------------------------------------------------------
+                int idRol = 1;
+                if (entidad.getRol() == Roles_Usuarios.Caja) {
+                    idRol = 2;
+                }
+                ps.setInt(3, idRol);
+                //---------------------------------------------------------------------------------------------------------
+                int resEmpleado = ps.executeUpdate();
 
-            if (resEmpleado > 0 && resPersona > 0) {
-                conectar.conectar().commit();
-                return true;
-            } else {
-                conectar.conectar().rollback();
+                if (resEmpleado > 0) {
+                    return true;
+                }
             }
 
         } catch (SQLException e) {
@@ -191,11 +180,6 @@ public class ConsultaUsuario implements EntidadDAO<Usuario> {
 
         try {
 
-<<<<<<< HEAD
-=======
-            conectar.conectar().setAutoCommit(false);
-
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             ps = conectar.conectar().prepareStatement(consultaPersona);
             ps.setString(1, entidad.getPri_nombre());
             ps.setString(2, entidad.getSeg_nombre());
@@ -229,30 +213,21 @@ public class ConsultaUsuario implements EntidadDAO<Usuario> {
 
             int resPersona = ps.executeUpdate();
 
-<<<<<<< HEAD
             if (resPersona > 0) {
                 String consultaEmpleado = "UPDATE Usuario SET contraseña = ?, id_rol = ? WHERE id_persona = ?";
                 ps = conectar.conectar().prepareStatement(consultaEmpleado);
                 ps.setString(1, entidad.getContraseña());
-=======
-            String consultaEmpleado = "UPDATE Usuario SET contraseña = ?, id_rol = ? WHERE id_persona = ?";
-            ps = conectar.conectar().prepareStatement(consultaEmpleado);
-            ps.setString(1, entidad.getContraseña());
 
-            //-----------------------Rol del Usuario--------------------------------------------------------------------
-            int idRol = 0;
-            if (entidad.getRol() == Roles_Usuarios.Administrador) {
-                idRol = 1;
-            } else if (entidad.getRol() == Roles_Usuarios.Caja) {
-                idRol = 2;
-            }
-            ps.setInt(2, idRol);
-            //---------------------------------------------------------------------------------------------------------
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
+                //-----------------------Rol del Usuario--------------------------------------------------------------------
+                int idRol = 0;
+                if (entidad.getRol() == Roles_Usuarios.Administrador) {
+                    idRol = 1;
+                } else if (entidad.getRol() == Roles_Usuarios.Caja) {
+                    idRol = 2;
+                }
+                ps.setInt(2, idRol);
+                //---------------------------------------------------------------------------------------------------------
 
-            ps.setInt(3, Integer.parseInt(entidad.getId_persona()));
-
-<<<<<<< HEAD
                 ps.setInt(3, Integer.parseInt(entidad.getId_persona()));
 
                 int resEmpleado = ps.executeUpdate();
@@ -261,15 +236,6 @@ public class ConsultaUsuario implements EntidadDAO<Usuario> {
 
                     return true;
                 }
-=======
-            int resEmpleado = ps.executeUpdate();
-
-            if (resEmpleado > 0 && resPersona > 0) {
-                conectar.conectar().commit();
-                return true;
-            } else {
-                conectar.conectar().rollback();
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             }
 
         } catch (SQLException e) {

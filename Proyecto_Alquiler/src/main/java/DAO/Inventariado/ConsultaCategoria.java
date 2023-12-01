@@ -23,6 +23,7 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
     ConexionBD conectar = ConexionBD.getConexion();
 
     //Retornara 3 en caso se quiera ingresar una categoria que ya esta repetida
+//Retornara 3 en caso se quiera ingresar una categoria que ya esta repetida
     @Override
     public int agregar(Categoria_Mobiliario obj) {
 
@@ -36,24 +37,14 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
 
         try {
 
-            conectar.conectar().setAutoCommit(false);
-
             ps = conectar.conectar().prepareStatement(consulta);
             ps.setString(1, obj.getNom_cat());
             ps.setString(2, obj.getDescrip());
             int exito = ps.executeUpdate();
 
             if (exito > 0) {
-<<<<<<< HEAD
                 return 1;
-            } 
-=======
-                conectar.conectar().commit();
-                return 1;
-            } else {
-                conectar.conectar().rollback();
             }
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
         } catch (SQLException e) {
             e.printStackTrace();

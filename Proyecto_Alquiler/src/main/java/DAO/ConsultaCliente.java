@@ -70,6 +70,7 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------
     //------------------------Registrar un Cliente-----------------------------------------------------------------------------------------------------
+    //------------------------Registrar un Cliente-----------------------------------------------------------------------------------------------------
     @Override
     public boolean Registrar(Cliente entidad) {
         ConsultaDATOSFIJOS coF = new ConsultaDATOSFIJOS();
@@ -79,8 +80,6 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
         String consultaCliente = "INSERT INTO Cliente (id_persona, correo, direccion, telefono) VALUES (?,?,?,?)";
 
         try {
-
-            conectar.conectar().setAutoCommit(false);
 
             //Si no existe, procede con el registro de la persona
             ps = conectar.conectar().prepareStatement(consultaPersona);
@@ -111,27 +110,21 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
 
             int resPersona = ps.executeUpdate();
 
-<<<<<<< HEAD
             if (resPersona > 0) {
                 int ultimoID = coF.obtenerUltimoID();
-=======
-            int ultimoID = coF.obtenerUltimoID();
 
-            ps = conectar.conectar().prepareStatement(consultaCliente);
-            ps.setInt(1, ultimoID);
-            ps.setString(2, entidad.getCorreo());
-            ps.setString(3, entidad.getDireccion());
-            ps.setString(4, entidad.getTelefono());
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
+                ps = conectar.conectar().prepareStatement(consultaCliente);
+                ps.setInt(1, ultimoID);
+                ps.setString(2, entidad.getCorreo());
+                ps.setString(3, entidad.getDireccion());
+                ps.setString(4, entidad.getTelefono());
 
-            //--------------------------------------------------------------------
-            int resEmpleado = ps.executeUpdate();
+                //--------------------------------------------------------------------
+                int resEmpleado = ps.executeUpdate();
 
-            if (resEmpleado > 0 && resPersona > 0) {
-                conectar.conectar().commit();
-                return true;
-            } else {
-                conectar.conectar().rollback();
+                if (resEmpleado > 0) {
+                    return true;
+                }
             }
 
         } catch (SQLException e) {
@@ -150,11 +143,6 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
 
         try {
 
-<<<<<<< HEAD
-=======
-            conectar.conectar().setAutoCommit(false);
-
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             ps = conectar.conectar().prepareStatement(consultaPersona);
             ps.setString(1, entidad.getPri_nombre());
             ps.setString(2, entidad.getSeg_nombre());
@@ -198,16 +186,8 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
             int resCliente = ps.executeUpdate();
 
             if (resCliente > 0 && resPersona > 0) {
-<<<<<<< HEAD
                 return true;
-            } 
-=======
-                conectar.conectar().commit();
-                return true;
-            } else {
-                conectar.conectar().rollback();
             }
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
         } catch (SQLException e) {
             e.printStackTrace();

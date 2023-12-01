@@ -37,11 +37,6 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
 
         try {
 
-<<<<<<< HEAD
-=======
-            conectar.conectar().setAutoCommit(false);
-
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             ps = conectar.conectar().prepareStatement(repetido);
             ps.setString(1, obj.getNom_pro());
             rs = ps.executeQuery();
@@ -68,21 +63,10 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
 
             ps.executeUpdate();
 
-            conectar.conectar().commit();
             return 1;
 
         } catch (SQLException e) {
-<<<<<<< HEAD
 
-=======
-            if (conectar.conectar() != null) {
-                try {
-                    conectar.conectar().rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             e.printStackTrace();
         }
 
@@ -117,10 +101,7 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
         PreparedStatement ps = null;
 
         try {
-            
-            
-            conectar.conectar().setAutoCommit(false);
-            
+
             ps = conectar.conectar().prepareStatement(consulta);
             ps.setFloat(1, obj.getPrecio_uni());
             ps.setString(2, obj.getNom_pro());
@@ -130,22 +111,9 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
             }
 
             ps.executeUpdate();
-<<<<<<< HEAD
             return 1;
         } catch (SQLException e) {
 
-=======
-            conectar.conectar().commit();
-            return 1;
-        } catch (SQLException e) {
-            if (conectar.conectar() != null) {
-                try {
-                    conectar.conectar().rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
->>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             e.printStackTrace();
         }
 
