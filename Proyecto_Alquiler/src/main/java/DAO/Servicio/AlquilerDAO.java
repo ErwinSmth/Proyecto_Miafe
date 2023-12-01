@@ -476,7 +476,7 @@ public class AlquilerDAO {
             ps.setInt(2, cantAlquilada);
             ps.setString(3, nombrePro);
 
-            return ps.executeUpdate(); // Retorna el número de filas modificadas
+            return ps.executeUpdate(); //Retornara el numero de filas modificadas
         } catch (Exception e) {
             e.printStackTrace();
         }
