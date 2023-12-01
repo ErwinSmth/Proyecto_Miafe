@@ -178,6 +178,51 @@ public class Control_AgregarItem implements ActionListener {
 
         } else if (e.getSource() == addItem.btn_Editar) {
 
+            int fila = (int) addItem.table_selected.getSelectedRow();
+
+            if (fila != -1) {
+
+                String nombrePro = (String) addItem.table_selected.getValueAt(fila, 0);
+                int idalquiler = Integer.parseInt(addItem.txt_id.getText());
+                String cantiadadString = (String) addItem.table_selected.getValueAt(fila, 1);
+                int cantidad = Integer.parseInt(cantiadadString);
+
+                int disponible = alquiDAO.getDisponibles(nombrePro);
+
+                int newcantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la nueva cantidad"));
+
+                if (newcantidad <= 0) {
+
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar una cantidad valida");
+
+                }
+                if (newcantidad > disponible) {
+
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar una cantidad menor a la disponible");
+
+                } else {
+                    if (newcantidad != cantidad) {
+                        //si la cantidad a agregar es mayor a la cantidad del producto que ya esta seleccionado se llama
+                        //al metodo para que actualize el inventario cuando se agrega mas
+                        float costoUnitario = alquiDAO.obtenerCosto(nombrePro);
+                        int resultado = alquiDAO.updateCant(idalquiler, nombrePro, newcantidad, costoUnitario);
+
+                        if (resultado == 1) {
+                            mostrarProductos();
+                            seleccionados();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al actualizar la cantidad");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad ingresada es igual a la actual");
+                    }
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un producto");
+            }
+
         }
 
     }

@@ -80,6 +80,8 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
 
         try {
 
+            conectar.conectar().setAutoCommit(false);
+
             //Si no existe, procede con el registro de la persona
             ps = conectar.conectar().prepareStatement(consultaPersona);
             ps.setString(1, entidad.getPri_nombre());
@@ -109,22 +111,27 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
 
             int resPersona = ps.executeUpdate();
 
+<<<<<<< HEAD
             if (resPersona > 0) {
-
                 int ultimoID = coF.obtenerUltimoID();
+=======
+            int ultimoID = coF.obtenerUltimoID();
 
-                ps = conectar.conectar().prepareStatement(consultaCliente);
-                ps.setInt(1, ultimoID);
-                ps.setString(2, entidad.getCorreo());
-                ps.setString(3, entidad.getDireccion());
-                ps.setString(4, entidad.getTelefono());
+            ps = conectar.conectar().prepareStatement(consultaCliente);
+            ps.setInt(1, ultimoID);
+            ps.setString(2, entidad.getCorreo());
+            ps.setString(3, entidad.getDireccion());
+            ps.setString(4, entidad.getTelefono());
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
-                //--------------------------------------------------------------------
-                int resEmpleado = ps.executeUpdate();
+            //--------------------------------------------------------------------
+            int resEmpleado = ps.executeUpdate();
 
-                if (resEmpleado > 0) {
-                    return true;
-                }
+            if (resEmpleado > 0 && resPersona > 0) {
+                conectar.conectar().commit();
+                return true;
+            } else {
+                conectar.conectar().rollback();
             }
 
         } catch (SQLException e) {
@@ -142,6 +149,12 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
         String consultaPersona = "UPDATE Persona SET pri_nombre = ?, seg_nombre = ?, ape_paterno = ?, ape_materno = ?, id_tipo_doc = ?,num_doc = ? WHERE id_persona = ?";
 
         try {
+
+<<<<<<< HEAD
+=======
+            conectar.conectar().setAutoCommit(false);
+
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             ps = conectar.conectar().prepareStatement(consultaPersona);
             ps.setString(1, entidad.getPri_nombre());
             ps.setString(2, entidad.getSeg_nombre());
@@ -174,23 +187,27 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
 
             int resPersona = ps.executeUpdate();
 
-            if (resPersona > 0) {
+            String consultaCliente = "UPDATE Cliente SET correo = ?, direccion = ?, telefono = ? WHERE id_persona = ?";
+            ps = conectar.conectar().prepareStatement(consultaCliente);
+            ps.setString(1, entidad.getCorreo());
+            ps.setString(2, entidad.getDireccion());
+            ps.setString(3, entidad.getTelefono());
+            ps.setInt(4, Integer.parseInt(entidad.getId_persona()));
+            //---------------------------------------------------------------------------------------------------------
 
-                String consultaCliente = "UPDATE Cliente SET correo = ?, direccion = ?, telefono = ? WHERE id_persona = ?";
-                ps = conectar.conectar().prepareStatement(consultaCliente);
-                ps.setString(1, entidad.getCorreo());
-                ps.setString(2, entidad.getDireccion());
-                ps.setString(3, entidad.getTelefono());
-                ps.setInt(4, Integer.parseInt(entidad.getId_persona()));
-                //---------------------------------------------------------------------------------------------------------
+            int resCliente = ps.executeUpdate();
 
-                int resCliente = ps.executeUpdate();
-
-                if (resCliente > 0) {
-                    return true;
-                }
-
+            if (resCliente > 0 && resPersona > 0) {
+<<<<<<< HEAD
+                return true;
+            } 
+=======
+                conectar.conectar().commit();
+                return true;
+            } else {
+                conectar.conectar().rollback();
             }
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -419,7 +436,7 @@ public class ConsultaCliente implements EntidadDAO<Cliente> {
                 + "INNER JOIN Tipo_Documento td ON p.id_tipo_doc = td.id_tipo_doc "
                 + "WHERE c.correo = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
             ps.setString(1, correo);
             rs = ps.executeQuery();

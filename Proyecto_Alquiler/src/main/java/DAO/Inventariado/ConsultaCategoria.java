@@ -29,19 +29,31 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
         if (catRepetido(obj.getNom_cat())) {
             return 3;//La categoria ya existe en la bd
         }
-        
+
         String consulta = "Insert into Categoria_Objeto(nombre_cat, descripcion) values (?,?)";
 
         PreparedStatement ps = null;
 
         try {
 
+            conectar.conectar().setAutoCommit(false);
+
             ps = conectar.conectar().prepareStatement(consulta);
             ps.setString(1, obj.getNom_cat());
             ps.setString(2, obj.getDescrip());
-            ps.executeUpdate();
+            int exito = ps.executeUpdate();
 
-            return 1;
+            if (exito > 0) {
+<<<<<<< HEAD
+                return 1;
+            } 
+=======
+                conectar.conectar().commit();
+                return 1;
+            } else {
+                conectar.conectar().rollback();
+            }
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,13 +67,13 @@ public class ConsultaCategoria implements InventarioDAO<Categoria_Mobiliario> {
     private boolean catRepetido(String nombre) {
 
         String consulta = "SELECT * FROM Categoria_Objeto WHERE nombre_cat = ?";
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(consulta)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(consulta)) {
             ps.setString(1, nombre);
-            
-            try (ResultSet rs = ps.executeQuery()) {
+
+            try ( ResultSet rs = ps.executeQuery()) {
                 return rs.next(); // True si existe esa categoria en la bd
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -22,7 +22,7 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
     //1 Representara que se agrego, elimino, etc correctamente
     //2 Representa que hubo un error
     ConexionBD conectar = ConexionBD.getConexion();
-    
+
     //Metodo para agregar un producto al inventario por defecto solo permitira agregar objetos que estan disponibles a prestar
     //Retornada 3 en caso los productos a agregar sean negativo o cero
     //Retornada 4 en caso el precio a insertar sea negatico o cero
@@ -36,19 +36,23 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
         ResultSet rs = null;
 
         try {
-            
+
+<<<<<<< HEAD
+=======
+            conectar.conectar().setAutoCommit(false);
+
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             ps = conectar.conectar().prepareStatement(repetido);
             ps.setString(1, obj.getNom_pro());
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 int contar = rs.getInt(1);
-                
+
                 if (contar > 0) {
                     return 5;
                 }
-            } 
-            
+            }
 
             ps = conectar.conectar().prepareStatement(consulta);
             ps.setString(1, obj.getCategoria().getNom_cat());
@@ -64,9 +68,21 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
 
             ps.executeUpdate();
 
+            conectar.conectar().commit();
             return 1;
 
         } catch (SQLException e) {
+<<<<<<< HEAD
+
+=======
+            if (conectar.conectar() != null) {
+                try {
+                    conectar.conectar().rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             e.printStackTrace();
         }
 
@@ -101,7 +117,10 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
         PreparedStatement ps = null;
 
         try {
-
+            
+            
+            conectar.conectar().setAutoCommit(false);
+            
             ps = conectar.conectar().prepareStatement(consulta);
             ps.setFloat(1, obj.getPrecio_uni());
             ps.setString(2, obj.getNom_pro());
@@ -109,11 +128,24 @@ public class ConsultaProducto implements InventarioDAO<Producto> {
             if (obj.getPrecio_uni() <= 0) {
                 return 3;
             }
-            
-            ps.executeUpdate();
 
+            ps.executeUpdate();
+<<<<<<< HEAD
             return 1;
         } catch (SQLException e) {
+
+=======
+            conectar.conectar().commit();
+            return 1;
+        } catch (SQLException e) {
+            if (conectar.conectar() != null) {
+                try {
+                    conectar.conectar().rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             e.printStackTrace();
         }
 

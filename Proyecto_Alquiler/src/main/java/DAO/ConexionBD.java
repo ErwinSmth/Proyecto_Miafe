@@ -38,14 +38,16 @@ public class ConexionBD {
 
     //Metodo para cerrar la conexion
     public void Desconectar() throws SQLException {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            con.close();
-        } finally {
-            con.close();
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                con = null;
+            }
         }
+
     }
 
     //Patron Singleton para usar una sola conexion en la BD
@@ -57,7 +59,7 @@ public class ConexionBD {
         return instancia;
 
     }
-    
+
 //    public static void main(String[] args) {
 //        
 //        ConexionBD conectar = ConexionBD.getConexion();
@@ -72,5 +74,4 @@ public class ConexionBD {
 //        }
 //        
 //    }
-
 }

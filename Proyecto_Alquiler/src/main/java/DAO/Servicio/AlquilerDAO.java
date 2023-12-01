@@ -34,7 +34,7 @@ public class AlquilerDAO {
         String query = "SELECT nombre, cant_disponible, precio FROM inventario";
         List<Producto> productos = new ArrayList<>();
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Producto producto = new Producto();
@@ -57,7 +57,7 @@ public class AlquilerDAO {
         List<Producto> productos = new ArrayList<>();
         String query = "SELECT * FROM Inventario WHERE nombre LIKE ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
             ps.setString(1, "%" + nombre + "%");
             ResultSet rs = ps.executeQuery();
@@ -83,7 +83,7 @@ public class AlquilerDAO {
         int idCliente = 0;
         String query = "SELECT id_cliente FROM Cliente WHERE correo = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setString(1, correo);
             ResultSet rs = ps.executeQuery();
 
@@ -102,7 +102,7 @@ public class AlquilerDAO {
         int idAquiler = 0;
         String query = "Select MAX(id_alquiler) AS ultimo_id FROM Alquiler";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
             ResultSet rs = ps.executeQuery();
 
@@ -122,8 +122,14 @@ public class AlquilerDAO {
     public int addAlquiler(ContratoAlquiler obj) {
 
         String query = "Insert into Alquiler (id_cliente, fecha_contrato) values (?, ?)";
+<<<<<<< HEAD
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+=======
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);) {
+
+            conectar.conectar().setAutoCommit(false);
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
             ps.setString(1, obj.getCliente().getId_cliente());
 
@@ -131,17 +137,26 @@ public class AlquilerDAO {
             java.sql.Date fechaSQL = java.sql.Date.valueOf(obj.getFecha_Contrato());
             ps.setDate(2, fechaSQL);
 
-            ps.executeUpdate();
+            int exito = ps.executeUpdate();
 
-            return 1;
+            if (exito > 0) {
+<<<<<<< HEAD
+                return 1;
+=======
+                conectar.conectar().commit();
+                return 1;
+            } else {
+                conectar.conectar().rollback();
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 2;
     }
-
     //Este metodo se usara para registrar en que fecha el cliente devolvio los productos
+
     public int setDevolucion(ContratoAlquiler obj) {
 
         String query = "UPDATE Alquiler AS a\n"
@@ -149,7 +164,7 @@ public class AlquilerDAO {
                 + "SET a.fecha_devolucion = ?\n"
                 + "WHERE c.correo = ?;";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
             //Convertir Local a java.sql.Date
             java.sql.Date fechaSQL = java.sql.Date.valueOf(obj.getFecha_devolucion());
@@ -171,51 +186,64 @@ public class AlquilerDAO {
 
     //Este metodo se usara si en caso el cliente desea cancelar un alquiler 
     public int eliminarAlquiler(ContratoAlquiler obj) {
+<<<<<<< HEAD
+        String query = "DELETE FROM Alquiler_Inventario WHERE id_alquiler = ?";
+        String seleccionados = "SELECT nombre, cantidad_alquilada FROM Alquiler_Inventario WHERE id_alquiler = ?";
+        String borrarAlquiler = "DELETE FROM Alquiler WHERE id_alquiler = ?";
 
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  PreparedStatement psSelect = conectar.conectar().prepareStatement(seleccionados);  PreparedStatement psBorrarAlquiler = conectar.conectar().prepareStatement(borrarAlquiler)) {
+=======
         String query = "Delete from Alquiler_Inventario WHERE id_alquiler = ?";
         String seleccionados = "SELECT nombre, cantidad_alquilada FROM Alquiler_Inventario WHERE id_alquiler = ?";
+        String borrarAlquiler = "DELETE FROM Alquiler WHERE id_alquiler = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query); PreparedStatement psSelect = conectar.conectar().prepareStatement(seleccionados)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  
+                PreparedStatement psSelect = conectar.conectar().prepareStatement(seleccionados);  
+                PreparedStatement psBorrarAlquiler = conectar.conectar().prepareStatement(borrarAlquiler)) {
+
+            conectar.conectar().setAutoCommit(false);
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
             psSelect.setString(1, obj.getId_alquiler());
             ResultSet rs = psSelect.executeQuery();
 
-            //Aqui almacenaremos los productos que se alquilaron antes de eliminarlos
-            Map<String, Integer> producDevueltos = new HashMap<>();
+            Map<String, Integer> productosDevueltos = new HashMap<>();
 
             while (rs.next()) {
                 String nombrePro = rs.getString("nombre");
                 int cantidad = rs.getInt("cantidad_alquilada");
-                producDevueltos.put(nombrePro, cantidad);
+                productosDevueltos.put(nombrePro, cantidad);
             }
 
-            //Eliminamos los Productos asociados a un alquiler
             ps.setString(1, obj.getId_alquiler());
             ps.executeUpdate();
 
-            //Actualizamos el inventario devolviendo la cantidad alquilada
-            for (Map.Entry<String, Integer> entrada : producDevueltos.entrySet()) {
+            for (Map.Entry<String, Integer> entrada : productosDevueltos.entrySet()) {
                 String nombrePro = entrada.getKey();
                 int cantidad = entrada.getValue();
 
                 if (actualizarInventarioELI(nombrePro, cantidad) <= 0) {
                     System.out.println("Ocurrio un Error en la actualizacion del Inventario");
                 }
-
             }
 
-            //Eliminamos el registro del Alquiler
-            String borrarAlquiler = "DELETE FROM Alquiler WHERE id_alquiler = ?";
-            try (PreparedStatement psborrar = conectar.conectar().prepareStatement(borrarAlquiler)) {
+            psBorrarAlquiler.setString(1, obj.getId_alquiler());
+            psBorrarAlquiler.executeUpdate();
 
-                psborrar.setString(1, obj.getId_alquiler());
-                psborrar.executeUpdate();
-
-            }
-
+            conectar.conectar().commit();
             return 1;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+<<<<<<< HEAD
+=======
+            if (conectar.conectar() != null) {
+                try {
+                    conectar.conectar().rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
             e.printStackTrace();
         }
         return 2;
@@ -229,8 +257,10 @@ public class AlquilerDAO {
         String query = "insert into Alquiler_Inventario(id_alquiler, nombre, cantidad_alquilada, precio_alquiler)\n"
                 + "values(?, ?, ?, ?)";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
+            conectar.conectar().setAutoCommit(false);
+            
             ps.setInt(1, idAlquiler);
             ps.setString(2, i.getProducto().getNom_pro());
             ps.setInt(3, i.getCantidad());
@@ -243,7 +273,14 @@ public class AlquilerDAO {
             int fila = ps.executeUpdate();
 
             if (fila > 0) {
+<<<<<<< HEAD
+
+=======
+                conectar.conectar().commit();
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
                 return 1;
+            } else {
+                conectar.conectar().rollback();
             }
 
         } catch (Exception e) {
@@ -254,17 +291,106 @@ public class AlquilerDAO {
     }
 
     //Este metodo se usara en caso se desee editar la cantidad de objeto que ya se asocio a un alquiler
-    public int updateCant(int idAlquiler, String nombrePro, int nuevaCant) {
+    public int updateCant(int idAlquiler, String nombrePro, int nuevaCant, float nuevoCosto) {
 
-        String query = "Update Alquiler_Inventario SET cantidad_alquilada = ? WHERE id_alquiler = ? AND nombre = ?";
+        String query = "Update Alquiler_Inventario SET cantidad_alquilada = ?, precio_alquiler = ? WHERE id_alquiler = ? AND nombre = ?";
+        String cantAnterior = "SELECT cantidad_alquilada FROM Alquiler_Inventario WHERE id_alquiler = ? AND nombre = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+<<<<<<< HEAD
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query);  PreparedStatement ps2 = conectar.conectar().prepareStatement(cantAnterior)) {
+=======
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
 
-            ps.setInt(1, idAlquiler);
-            ps.setString(2, nombrePro);
+            //La nueva cantidad 
             ps.setInt(1, nuevaCant);
+            ps.setInt(2, idAlquiler);
+            ps.setString(3, nombrePro);
+
+            //La cantidad anterior 
+            ps2.setInt(1, idAlquiler);
+            ps2.setString(2, nombrePro);
+
+            ResultSet rs = ps2.executeQuery();
+
+            if (rs.next()) {
+
+                int cantidadAnterior = rs.getInt("cantidad_alquilada");
+                int diferencia = nuevaCant - cantidadAnterior;
+
+                //actualizar la cantidad y calcular el nuevo precio
+                ps.setInt(1, nuevaCant);
+                float nuevoPrecio = nuevoCosto * nuevaCant;
+                ps.setFloat(2, nuevoPrecio);
+                ps.setInt(3, idAlquiler);
+                ps.setString(4, nombrePro);
+
+                int resultado = ps.executeUpdate();
+
+                if (diferencia != 0) {
+                    int resultadoActualizar = actualizarInventario(diferencia, nombrePro);
+                    if (resultado > 0 && resultadoActualizar > 0) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+                return resultado;
+            }
 
             return ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private int actualizarInventario(int diferencia, String nombrePro) {
+        String query = "UPDATE inventario SET cant_disponible = cant_disponible - ?, cant_prestada = cant_prestada + ? WHERE nombre = ?";
+
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+            ps.setInt(1, diferencia);
+            ps.setInt(2, diferencia);
+            ps.setString(3, nombrePro);
+
+            return ps.executeUpdate(); // Retorna el número de filas modificadas en el inventario
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public float obtenerCosto(String nombrePro) {
+        String query = "Select precio from inventario where nombre = ?";
+
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
+            ps.setString(1, nombrePro);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getFloat("precio");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getDisponibles(String nombrePro) {
+
+        String query = "Select cant_disponible from inventario where nombre = ?";
+
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
+            ps.setString(1, nombrePro);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("cant_disponible");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -279,7 +405,7 @@ public class AlquilerDAO {
 
         String query = "Select nombre, cantidad_alquilada, precio_alquiler FROM Alquiler_Inventario WHERE id_alquiler = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setString(1, idAlquiler);
             ResultSet rs = ps.executeQuery();
 
@@ -313,7 +439,7 @@ public class AlquilerDAO {
                 + "SET a.fecha_entrega = ?, a.cantidad_total = ?, a.precio_total = ?\n"
                 + "WHERE c.correo = ?;";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
 
             //Convertir Local a java.sql.Date
             java.sql.Date fechaSQL = java.sql.Date.valueOf(obj.getFecha_entrega());
@@ -351,7 +477,7 @@ public class AlquilerDAO {
                 + "FROM Inventario "
                 + "WHERE nombre = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
 
@@ -378,7 +504,7 @@ public class AlquilerDAO {
     public int actualizarInventarioADD(String nombrePro, int cantAlquilada) {
         String query = "UPDATE inventario SET cant_disponible = cant_disponible - ?, cant_prestada = cant_prestada + ? WHERE nombre = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setInt(1, cantAlquilada);
             ps.setInt(2, cantAlquilada);
             ps.setString(3, nombrePro);
@@ -394,7 +520,7 @@ public class AlquilerDAO {
     public int actualizarInventarioELI(String nombrePro, int cantAlquilada) {
         String query = "UPDATE inventario SET cant_disponible = cant_disponible + ?, cant_prestada = cant_prestada - ? WHERE nombre = ?";
 
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
             ps.setInt(1, cantAlquilada);
             ps.setInt(2, cantAlquilada);
             ps.setString(3, nombrePro);
@@ -405,22 +531,26 @@ public class AlquilerDAO {
         }
         return 0;
     }
-    
-    public int eliminarPro(String nombrePro, int idAlquiler){
-        
+
+    public int eliminarPro(String nombrePro, int idAlquiler) {
+<<<<<<< HEAD
+        String query = "DELETE FROM Alquiler_Inventario WHERE nombre = ? and id_alquiler = ?";
+=======
+
         String query = "DELETE FROM Alquiler_Inventario WHERE nombre = ?, id_alquiler = ?";
-        
-        try (PreparedStatement ps = conectar.conectar().prepareStatement(query)){
-            
+>>>>>>> aa454cd4816c942fca4242646f5d94114af81b4b
+
+        try ( PreparedStatement ps = conectar.conectar().prepareStatement(query)) {
+
             ps.setString(1, nombrePro);
             ps.setInt(2, idAlquiler);
-            
+
             return ps.executeUpdate();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return 0;
     }
 }
