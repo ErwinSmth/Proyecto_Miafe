@@ -6,6 +6,7 @@ package Controlador.Servicio;
 
 import DAO.ConsultaCliente;
 import DAO.Servicio.AlquilerDAO;
+import JavaEmail.JavaEmailSender;
 import Modelo.Cliente;
 import Modelo.Inventariado.Producto;
 import Modelo.Servicio.ContratoAlquiler;
@@ -240,9 +241,9 @@ public class Control_AgregarItem implements ActionListener {
         } else if (e.getSource() == addItem.btn_contrato) {
 
             Date fecha = addItem.jdate_fechaDevolu.getDate();
-            if (fecha != null) { 
+            if (fecha != null) {
 
-                Instant instante = fecha.toInstant(); 
+                Instant instante = fecha.toInstant();
                 LocalDate fechaDevolucion = instante.atZone(ZoneId.systemDefault()).toLocalDate();
 
                 LocalDate fechaActual = LocalDate.now();
@@ -254,6 +255,7 @@ public class Control_AgregarItem implements ActionListener {
 
                     contrato.setFecha_entrega(fechaDevolucion);
                     Cliente cliente = conCli.getDatosCli(addItem.lbl_correo.getText());
+                    cliente.setCorreo(addItem.lbl_correo.getText());
                     System.out.println(cliente.toString());
                     contrato.setCliente(cliente);
                     contrato.setCantidadTotal(Integer.parseInt(addItem.txt_cantidad.getText()));
@@ -262,6 +264,11 @@ public class Control_AgregarItem implements ActionListener {
                     if (alquiDAO.terminarContrato(contrato) == 1) {
                         System.out.println("Exito");
                         addItem.dispose();
+
+                        String precio = addItem.txt_precioTotal.getText();
+
+                        JavaEmail.JavaEmailSender emailSender = new JavaEmailSender();
+                        emailSender.enviarTotal(cliente.getCorreo(), "hola", "gaaa", precio);;
                     } else {
                         System.out.println("Ocurrio un error");
                     }
